@@ -237,6 +237,34 @@ async function getProfile() {
     }
 }
 
+// ====== BUSCAR IMAGEM DO README (SE EXISTIR) ======
+async function getReadmeImage(repoName) {
+    try {
+        const res = await fetch(
+            `https://api.github.com/repos/${username}/${repoName}/readme`
+        );
+
+        if (!res.ok) return null;
+
+        const data = await res.json();
+        const content = atob(data.content);
+
+        const match = content.match(/!\[.*?\]\((.*?)\)/);
+        if (!match) return null;
+
+        let imageUrl = match[1];
+
+        // se for caminho relativo
+        if (!imageUrl.startsWith('http')) {
+            imageUrl = `https://raw.githubusercontent.com/${username}/${repoName}/main/${imageUrl}`;
+        }
+
+        return imageUrl;
+    } catch {
+        return null;
+    }
+}
+
 // ====== BUSCAR REPOSITÓRIOS ======
 async function getRepos() {
     try {
@@ -245,17 +273,21 @@ async function getRepos() {
         );
         let repos = await response.json();
 
-        // 🔥 FILTROS IMPORTANTES
+        // 🔥 FILTROS IMPORTANTES (MANTIDOS)
         repos = repos.filter(repo =>
-            !repo.fork &&                          // remove forks
+            !repo.fork &&
             !repo.name.toLowerCase().includes('portfolio') &&
             !repo.name.toLowerCase().includes('site')
         );
 
         container.innerHTML = '';
 
-        repos.forEach(repo => {
-            const repoImage = `https://opengraph.githubassets.com/1/${username}/${repo.name}`;
+        for (const repo of repos) {
+            const fallbackImage =
+                `https://opengraph.githubassets.com/1/${username}/${repo.name}`;
+
+            const readmeImage = await getReadmeImage(repo.name);
+            const repoImage = readmeImage || fallbackImage;
 
             const card = `
                 <div class="col-12 col-md-6 col-lg-4">
@@ -280,7 +312,7 @@ async function getRepos() {
                 </div>
             `;
             container.innerHTML += card;
-        });
+        }
 
         if (repos.length === 0) {
             container.innerHTML = `
@@ -304,6 +336,7 @@ async function getRepos() {
 getProfile();
 getRepos();
 </script>
+
 
 
   </body>
