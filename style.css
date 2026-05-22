@@ -1,13 +1,16 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
+.body{
+    scroll-behavior: smooth;
+}
 .fonte{
     font-size: 2rem;
 }
 #background{
-    background-color: #e7ecef;
+    background-color: #23272a ;
 }
 #navegacao{
-    background-color: #0582CA;
+    background-color: #4e5d94;
 }
 #sobremim{
     gap: 5%;
@@ -24,72 +27,104 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
-
-#inicio{
+#inicio {
     position: relative;
-    background: linear-gradient(rgba(5, 130, 202), rgba(231, 236, 239, 0.1));
-    padding-top: 10%;
-    padding-bottom: 40%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    background: linear-gradient(rgba(78, 93, 148), transparent);
+    padding-top: 12%;
+    padding-bottom: 35%;
+    display: flex;
+    align-items: center; /* Alinha verticalmente a div de conteúdo */
 }
-#backinicio{
+
+#backinicio {
     z-index: -1;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: auto;
-    animation: play 30s steps(300) infinite;
+    object-fit: cover; 
 }
-#textoinicio{
+
+/* A CLASSE GERAL */
+.iniciocontent {
     position: absolute;
+    left: 5%; 
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 25px; 
+    font-family: monospace;
+}
+
+#textoinicio {
     font-family: 'Press Start 2P', Cursive;
-    font-size: 150%;
     letter-spacing: 1px;
     font-size: 3vw;
-    margin-top: 18%;
+    margin: 0; 
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid #bec4ca;
     animation: typing 2s steps(24),
     cursor .4s step-end infinite alternate;
 }
-    @keyframes typing {
-    from { width: 0; }
-    to { width: 24ch; } /* número de caracteres do texto */
-    }
 
-    @keyframes blink {
+@keyframes typing {
+    from { width: 0; }
+    to { width: 24ch; } 
+}
+@keyframes blink {
     50% { border-color: transparent; }
-    }
-#meusprojetos{
+}
+
+#meusprojetos {
+    /* REMOVIDO position: absolute e top/left antigos */
+    display: inline-block; /* Garante que o padding funcione perfeitamente */
     font-family: monospace;
-    color: rgb(66, 61, 61);
+    color: rgb(240, 243, 247);
     font-size: 130%;
-    position: absolute;
-    margin-top: 40%;
     text-decoration: none;
-    background-color: rgb(240, 243, 247);
+    background-color: #2c2f33;
     backdrop-filter: blur(5px);
     border-radius: 1vw;
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    border-radius: 1vw;
-    padding: 1vw;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding: 0.6vw 3vw; 
     transition: all 0.4s ease;
 }
 #meusprojetos:hover {
-    background: linear-gradient(to bottom right, #03045e, #00b4d8, #caf0f8);
+    background: linear-gradient(to bottom right, #4e5d94, #7289da, #ffffff);
     border-color: rgba(255, 255, 255, 0.6);
     color: #ffffff;
     transform: scale(1.05);
     box-shadow: 0 8px 25px rgba(0, 195, 255, 0.3);
+}
+/* ==================== RESPONSIVIDADE (MOBILE) ==================== */
+@media (max-width: 768px) {
+    #inicio {
+        padding-top: 30%;     /* Aumenta o tamanho vertical do banner no celular */
+        padding-bottom: 80%;  /* Garante que o container fique esticado para o vídeo */
+        padding-left: 5%;
+    }
+
+    #textoinicio {
+        left: 5%;
+        top: 30%;
+        font-size: 4.5vw;     /* Mantém o texto em uma escala legível no mobile */
+        white-space: normal;  /* Permite que o texto quebre linha se a tela for muito pequena */
+        border-right: none;   /* Opcional: desativa a barra piscando se quebrar linha */
+        animation: none;      /* Desativa a animação de digitação fixa que dependia de caracteres na mesma linha */
+    }
+
+    #meusprojetos {
+        left: 5%;
+        top: 55%;
+        font-size: 0.9rem;    /* Diminui o tamanho da fonte do botão no celular */
+        padding: 3vw 6vw;     /* Ajusta o espaçamento interno para não ficar gigante */
+        border-radius: 8px;   /* Cantos arredondados mais suaves para telas pequenas */
+    }
 }
 
 
@@ -108,96 +143,13 @@
     font-family: monospace;
     font-size: 140%;
 }
-
-
 .overlay-wrapper {
     /* Garante que o conteúdo não seja puxado para fora */
     overflow: hidden; 
 }
-#DrStone{
-    margin-top: 1vw;
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: brightness(15%);
-}
-.EmManutencao{
-/* 1. Faz o texto flutuar acima da imagem */
-    position: absolute; 
-    
-    /* 2. Garante que ele ocupe toda a área do seu contêiner pai para centralizar */
-    width: 100%;
-    height: 100%;
-    /* 3. TRANSFORMA O ELEMENTO EM FLEX CONTAINER */
-    display: flex; 
-    
-    /* 4. CENTRALIZA HORIZONTALMENTE */
-    justify-content: center; 
-    
-    /* 5. CENTRALIZA VERTICALMENTE */
-    align-items: center; 
-    
-    /* --- Estilos Adicionais (Não essenciais para a centralização, mas importantes) --- */
-    /* CRUCIAL 2: Posiciona o centro do elemento no centro do wrapper */
-    top: 50%;
-    left: 50%;
-    /* CRUCIAL 3: Move o elemento 50% de sua PRÓPRIA altura/largura de volta */
-    transform: translate(-50%, -50%);
-    color: white; 
-    font-family: 'Press Start 2P', Cursive;
-    font-size: 150%;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-    text-align: center; /* Garante que o texto dentro do <p> seja centralizado */
-    margin: 0; /* Remove a margem padrão do <p> */
-    
-    /* Garante que ele fique no topo (opcional) */
-    z-index: 10;
-}
-
-
-
-/* Estilo para o Título Principal */
-#skills h2 {
-    color: #212529;
-    position: relative;
-    padding-bottom: 10px;
-}
-#skills h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: #0d6efd; /* Azul do Bootstrap */
-    margin: 10px auto 0;
-}
-/* Estilo da barra de progresso (opcional, mas melhora a estética) */
-.progress {
-    border-radius: 5px;
-    background-color: #e9ecef;
-}
-/* Cores das barras de progresso */
-/* Apenas para garantir que as cores sejam vibrantes */
-.progress-bar.bg-success { background-color: #198754 !important; }
-.progress-bar.bg-warning { background-color: #ffc107 !important; }
-.progress-bar.bg-info { background-color: #0dcaf0 !important; }
-.progress-bar.bg-primary { background-color: #0d6efd !important; }
-.progress-bar.bg-secondary { background-color: #6c757d !important; }
-/* Estilo para os Badges de Outras Habilidades */
-.badge {
-    font-size: 1.5rem;
-    font-weight: 500;
-    padding: 0.75rem 1.25rem !important; /* Aumenta o padding para serem mais visíveis */
-    transition: background-color 0.3s;
-}
-.badge:hover {
-    background-color: #495057 !important; /* Escurece no hover */
-}
-
-
-
 
 .footer {
-    background: linear-gradient(rgba(231,236,239,0.2), rgba(5,130,202,1));
+    background: linear-gradient(transparent, #4e5d94);
     padding: 5rem 0;
     text-align: center;
     color: #fff;
@@ -223,30 +175,561 @@
     opacity: 0.7;
 }
 
-/* ===== FORMAÇÃO ===== */
-.formacao-card {
-    border: none;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #ffffff, #f3f3f3);
-    transition: all 0.3s ease;
+/* ==================== JANELA DO SISTEMA ACADÊMICO (SOLO LEVELING) ==================== */
+
+/* O Bloco externo que encapsula a interface do menu */
+.system-window {
+    
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 2px solid #00bfff; /* Borda externa ciano brilhante */
+    border-radius: 2px; /* Ângulos retos e agressivos de jogos */
+    box-shadow: 0 0 25px rgba(0, 191, 255, 0.25), inset 0 0 20px rgba(0, 191, 255, 0.1);
+    overflow: hidden;
 }
 
-.formacao-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+/* Cabeçalho superior onde fica o título da Janela */
+.system-window-header {
+    background: linear-gradient(90deg, rgba(0, 191, 255, 0.1) 0%, rgba(0, 191, 255, 0.25) 50%, rgba(0, 191, 255, 0.1) 100%);
+    padding: 16px 10px 10px 10px;
+    border-bottom: 1px solid rgba(0, 191, 255, 0.4);
 }
 
-.icon-formacao {
-    width: 55px;
-    height: 55px;
-    background: linear-gradient(135deg, #0d6efd, #6610f2);
-    color: #fff;
-    border-radius: 15px;
+/* Título em caixa alta brilhante do sistema */
+.system-window-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: #ffffff;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.8), 0 0 20px rgba(0, 191, 255, 0.4);
+}
+
+/* Linha horizontal dupla estilizada abaixo do título */
+.system-header-line {
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00bfff, transparent);
+    margin: 8px auto 0 auto;
+    position: relative;
+}
+
+.system-header-line::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 15%; width: 70%; height: 1px;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+    opacity: 0.7;
+}
+
+/* Corpo interno cinza-azulado translúcido onde os cards flutuam */
+.system-window-body {
+    background: rgba(4, 8, 12, 0.4);
+}
+
+/* Ajuste sutil nos cards internos para combinarem com o fundo da nova janela */
+.system-card {
+    background: rgba(14, 26, 38, 0.4) !important;
+    border: 1px solid rgba(0, 191, 255, 0.2) !important;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+}
+
+.system-card:hover {
+    border-color: #00bfff !important;
+    background: rgba(14, 26, 38, 0.7) !important;
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.35), inset 0 0 10px rgba(0, 191, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Subtítulos Técnicos internos */
+.text-info-system {
+    color: #00bfff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+/* Selos de Rank Quadrados e Radiantes */
+.rank-badge {
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 26px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    border-radius: 4px;
+    text-shadow: 0 0 6px rgba(0,0,0,0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
-.formacao-card .bg-success {
-    background: linear-gradient(135deg, #198754, #20c997) !important;
+
+.badge-rank-a {
+    background: linear-gradient(135deg, #ff3c00, #ff8800);
+    color: #fff;
+    box-shadow: 0 0 12px rgba(255, 60, 0, 0.5);
+}
+
+.badge-rank-b {
+    background: linear-gradient(135deg, #00bfff, #0055ff);
+    color: #fff;
+    box-shadow: 0 0 12px rgba(0, 191, 255, 0.5);
+}
+
+/* Linha Divisória de Atributos - Igualzinha à imagem de referência */
+.system-card-body {
+    border-top: 2px solid rgba(0, 191, 255, 0.25) !important;
+    position: relative;
+    background: rgba(4, 12, 20, 0.2);
+}
+
+/* Tags de Recompensas (Skills Dropadas) */
+.skill-tag {
+    background: rgba(0, 191, 255, 0.05);
+    border: 1px solid rgba(0, 191, 255, 0.2);
+    padding: 5px 14px;
+    border-radius: 3px; /* Cantos retos estilizados de inventário */
+    font-size: 0.75rem;
+    color: #d1f4ff;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+    background: rgba(0, 191, 255, 0.2);
+    border-color: #00bfff;
+    color: #fff;
+    box-shadow: 0 0 8px rgba(0, 191, 255, 0.3);
+}
+
+/* Botão de Resgatar Item / Baixar PDF */
+.btn-system-action {
+    background: rgba(4, 12, 20, 0.6);
+    color: #00bfff !important;
+    border: 1px solid #00bfff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    border-radius: 3px;
+    text-shadow: 0 0 4px rgba(0, 191, 255, 0.2);
+    transition: all 0.25s ease-in-out;
+}
+
+.btn-system-action:hover {
+    background: #00bfff;
+    color: #000000 !important;
+    box-shadow: 0 0 18px #00bfff;
+    text-shadow: none;
+    transform: scale(1.02);
+}
+
+/* Ícone de Seta de Expansão Ativa */
+.system-card-header[aria-expanded="true"] .arrow-toggle {
+    transform: rotate(180deg);
+    color: #00bfff !important;
+    filter: drop-shadow(0 0 5px #00bfff);
+}
+
+.arrow-toggle {
+    transition: all 0.3s ease;
+}
+
+.small-status {
+    font-size: 0.65rem !important;
+    letter-spacing: 0.5px;
+    border-color: rgba(0, 191, 255, 0.3) !important;
+    color: #00bfff !important;
+}
+/* ==================== ACCORDION ONE FOR ALL (REFORMULADO) ==================== */
+#ofa-skills h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.8rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.ofa-accordion {
+    display: flex;
+    width: 100%;
+    height: 500px; /* AUMENTADO VERTICALMENTE (Antes era 380px) */
+    gap: 5px;
+    margin-top: 30px;
+}
+
+.ofa-card {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    background-color: rgba(35, 39, 42, 0.75);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Nova estilização para a imagem do portador */
+.ofa-card-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.15; /* Fica bem escura/escondida por padrão */
+    filter: grayscale(100%); /* Sem cor no estado normal */
+    transition: all 0.6s ease;
+    pointer-events: none;
+}
+
+/* Garante que o texto fique por cima da imagem de fundo */
+.ofa-card-icon, .ofa-card-title, .ofa-card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.ofa-card-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.6); /* Fica cinza e sutil por padrão */
+    transition: all 0.4s ease;
+}
+
+.ofa-card-title {
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+}
+.ofa-card-title span {
+    font-size: 0.8rem;
+    color: #8e9297;
+    text-transform: uppercase;
+}
+.ofa-card-title h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #adb5bd;
+    margin: 0;
+}
+
+.ofa-card-content {
+    opacity: 0;
+    transform: translateX(30px);
+    pointer-events: none;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: monospace;
+}
+.ofa-card-content h4 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+.ofa-card-content p {
+    font-size: 1rem;
+    color: #f2f3f5;
+    max-width: 520px;
+    margin-bottom: 0;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8); /* Melhora leitura por cima da imagem */
+}
+
+/* ==================== EFEITO HOVER ATUALIZADO ==================== */
+.ofa-card:hover {
+    flex: 5;
+    background-color: rgba(20, 22, 24, 0.4); /* Escurece o fundo para destacar a foto */
+    border-color: var(--ofa-color);
+    box-shadow: 0 0 30px var(--ofa-color);
+}
+
+/* A imagem ganha vida e cor no hover */
+.ofa-card:hover .ofa-card-img {
+    opacity: 0.45;
+    filter: grayscale(0%);
+    transform: scale(1.08); 
+}
+
+.ofa-card:hover .ofa-card-icon img {
+    filter: grayscale(0%) drop-shadow(0 0 6px var(--ofa-color));
+}
+
+.ofa-card:hover .ofa-card-title h3 {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
+.ofa-card:hover .ofa-card-content h4 {
+    color: var(--ofa-color);
+}
+
+.ofa-card:hover .ofa-card-content {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    transition-delay: 0.2s;
+}
+
+/* RESPONSIVIDADE MOBILE */
+@media (max-width: 992px) {
+    #ofa-skills h2 {
+        font-size: 1.4rem !important; /* Ajusta o tamanho caso use a fonte Press Start 2P */
+        line-height: 1.5;
+    }
+    
+    .ofa-card-content p {
+        max-width: 100% !important; /* Impede o parágrafo de esticar para fora do card */
+        word-wrap: break-word;       /* Força a quebra de palavras longas se necessário */
+    }
+    .ofa-accordion {
+        flex-direction: column;
+        height: auto;
+    }
+    .ofa-card {
+        width: 100%;
+        height: 110px;
+        border-radius: 0px;
+    }
+    .ofa-card:hover {
+        flex: none;
+        height: 260px;
+    }
+    .ofa-card:hover .ofa-card-img {
+        opacity: 0.3;
+    }
+}
+/* ==================== DEKU TV MOBILE INTERFACE ==================== */
+.dekutv-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px; /* Mantém um tamanho excelente para telas de celular */
+    margin-top: -135px;
+}
+
+.dekutv-base {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+    z-index: 2; /* Fica por cima para dar o efeito de moldura da TV */
+    pointer-events: none;
+}
+
+/* Recorte exato da área interna da tela da TV */
+.dekutv-screen {
+    position: absolute;
+    top: 34%;    /* Ajuste essas porcentagens se precisar centralizar */
+    left: 30%;   /* perfeitamente no vidro da sua imagem PNG */
+    width: 42%;
+    height: 25%;
+    background-color: #8e9297;
+    z-index: 1;  /* Fica atrás da moldura da TV */
+    overflow: hidden;
+    transform: rotate(-10deg);
+}
+
+/* Contêiner do Glitch */
+.glitch-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* O Logo com animação estática e pulso neon */
+.glitch-logo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px var(--ofa-color));
+    animation: tvGlitchEffect 3s infinite linear alternate-reverse, tvPulse 2s infinite ease-in-out;
+}
+
+/* Linhas de varredura (Scanlines) de TV antiga CRT */
+.glitch-scanlines {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 6px 100%;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.8;
+}
+.dekutv-info-box {
+    position: absolute;
+    bottom: -8%;      
+    right: 10%;     
+    width: 80%;      
+    background: linear-gradient(135deg, rgba(20, 22, 24, 0.65) 0%, rgba(10, 11, 12, 0.8) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    z-index: 4;     
+    transition: all 0.4s ease;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+/* Ajustes finos nos textos para caberem de forma elegante na caixinha */
+.dekutv-info-box h5 {
+    font-size: 0.75rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.dekutv-info-box h6 {
+    font-size: 0.9rem !important;
+}
+.dekutv-info-box p {
+    font-size: 0.68rem !important;
+    line-height: 1.3;
+    color: rgba(242, 243, 245, 0.7) !important;
+}
+/* ==================== GLITCH ESTÁTICO (MÉTODO SOBREPOSIÇÃO) ==================== */
+/* 1. Granular da tela */
+.dekutv-screen::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* ruído estático usando um gradiente radial repetitivo */
+    background-image: 
+        repeating-radial-gradient(#000 0% 12%, transparent 13% 25%),
+        repeating-radial-gradient(#fff 0% 12%, transparent 13% 25%);
+    background-size: 8px 8px; /* Tamanho do grão da estática */
+    opacity: 0.15; 
+    z-index: 2; /* Fica acima do logo, mas abaixo das scanlines */
+    animation: staticNoise 0.2s infinite; /* Animação ultra rápida */
+    pointer-events: none;
+}
+/* 2. Interferência */
+.glitch-scanlines {
+    /* Mantemos sua estilização original, apenas adicionamos a animação */
+    animation: tvFlicker 0.15s infinite; 
+    z-index: 3; /* Topo de tudo na tela */
+    opacity: 0.9;
+}
+/* 3. glitch da logo */
+@keyframes tvGlitchEffect {
+    0%, 90%, 100% {
+        transform: translate(0) skew(0deg);
+        filter: drop-shadow(0 0 8px var(--ofa-color)) grayscale(0%);
+    }
+    91% {
+        transform: translate(1px, 1px);
+        filter: drop-shadow(-2px 0 #332e3a) drop-shadow(2px 0 #505f57) saturate(3);
+    }
+    93% {
+        transform: translate(-1px, -1px) skew(-1deg);
+        filter: hue-rotate(90deg) contrast(1.5);
+    }
+    95% {
+        transform: translate(2px, 0px) skew(1deg);
+    }
+}
+/* ==================== KEYFRAMES (ESTÁTICA E PISQUE) ==================== */
+/* Gera o grão em movimento da "neve" de TV */
+@keyframes staticNoise {
+    0% { background-position: 0 0; }
+    20% { background-position: 1px 1px; }
+    40% { background-position: -1px -1px; }
+    60% { background-position: 2px 0; }
+    80% { background-position: 0 -2px; }
+    100% { background-position: 1px 1px; }
+}
+/* Simula a interferência e o piscar irregular da tela antiga */
+@keyframes tvFlicker {
+    0%, 100% { opacity: 0.8; }
+    5% { opacity: 0.5; }
+    10% { opacity: 0.9; }
+    15% { opacity: 0.2; } /* Queda brusca de brilho */
+    20% { opacity: 0.8; }
+    30% { opacity: 1; }
+    80% { opacity: 0.9; }
+    90% { opacity: 0.4; }
+}
+.dekutv-screen.mudando-canal::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    animation: estaticaCanalEfeito 0.28s linear forwards;
+}
+
+@keyframes estaticaCanalEfeito {
+    0% {
+        opacity: 0;
+        background-color: transparent;
+    }
+    /* 1. A estática começa a surgir e falhar agressivamente */
+    15% {
+        opacity: 0.7;
+        background-image: 
+            repeating-radial-gradient(#fff 0% 10%, #000 11% 22%),
+            linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
+        background-size: 5px 5px, 100% 6px;
+        filter: contrast(2.5) brightness(1.8);
+    }
+    /* 2. O Pico do Chuvisco: Bloqueia totalmente a imagem antiga com ruído denso e linhas de erro brancas */
+    40%, 65% {
+        opacity: 1;
+        background-image: 
+            repeating-radial-gradient(#fff 0% 8%, #111 9% 18%),
+            repeating-linear-gradient(0deg, #ccc, #ccc 2px, transparent 2px, transparent 12px),
+            linear-gradient(0deg, rgba(255,255,255,0.4), transparent 40%, rgba(0,0,0,0.8));
+        background-size: 3px 3px, 100% 14px, 100% 100%;
+        filter: contrast(3.5) brightness(2.2) saturate(0);
+        /* Movimenta o ruído de fundo freneticamente no pico */
+        background-position: 5px -10px, 0px 20px, 0 0;
+    }
+    /* 3. O sinal do novo canal começa a se estabilizar, a estática vai morrendo */
+    85% {
+        opacity: 0.5;
+        background-image: repeating-radial-gradient(#fff 0% 12%, #000 13% 25%);
+        background-size: 6px 6px;
+        filter: contrast(1.8) brightness(1.2);
+    }
+    100% {
+        opacity: 0;
+        background-color: transparent;
+    }
+}
+
+/* 4. EFEITO EXTRA: Faz a logo antiga "rolar" e distorcer na vertical enquanto a estática sobe */
+.dekutv-screen.mudando-canal .glitch-logo {
+    animation: desestabilizarSinal 0.28s linear forwards !important;
+}
+
+@keyframes desestabilizarSinal {
+    0% {
+        transform: translateY(0) scale(1) skewX(0deg);
+        filter: blur(0);
+    }
+    /* A imagem perde o sincronismo vertical e começa a "subir" e esticar simulando o frame quebrado */
+    30% {
+        transform: translateY(-80px) scaleY(1.8) skewX(10deg);
+        filter: blur(2px) brightness(3) contrast(2);
+    }
+    /* Volta por baixo se reposicionando para o novo logo entrar firme */
+    70% {
+        transform: translateY(80px) scaleY(1.5);
+        filter: blur(1px);
+    }
+    100% {
+        transform: translateY(0) scale(1) skewX(0deg);
+        filter: blur(0);
+    }
 }

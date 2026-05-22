@@ -10,16 +10,10 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<!--[if gte mso 9]><xml>
-<mso:CustomDocumentProperties>
-<mso:_ApprovalStatus msdt:dt="string">0</mso:_ApprovalStatus>
-<mso:_ApprovalAssignedTo msdt:dt="string"></mso:_ApprovalAssignedTo>
-<mso:_ApprovalRespondedBy msdt:dt="string"></mso:_ApprovalRespondedBy>
-</mso:CustomDocumentProperties>
-</xml><![endif]-->
+    <script src="script.js" defer></script>
 </head>
 <body id="background">
-    <head>
+    <header>
         <nav class="navbar navbar-expand-lg" id="navegacao">
             <div class="container-fluid">
               <a class="navbar-brand text-light" id="titulo" href="#">IanLamartine</a>
@@ -32,21 +26,26 @@
                     <a class="nav-link active text-light" aria-current="page" href="#sobremimtxt">SobreMim</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-light" href="#skills">Habilidades</a>
+                    <a class="nav-link text-light" href="#ofa-skills">Habilidades</a>
                   </li>
                 </ul>
               </div>
             </div>
           </nav>
-    </head>
+    </header>
     <main>
         <section class="d-flex" id="inicio">
-            <img id="backinicio" src="https://media1.tenor.com/m/w8VLaOhZcAUAAAAC/giyuu-tomioka-demon-slayer.gif" alt="gif">
-            <h1 class="text-light" id="textoinicio">Full Stack Web Developer</h1>
-            <a id="meusprojetos" href="#Projetos"><strong>Meus Projetos</strong></a>
+            <video id="backinicio" autoplay loop muted playsinline>
+                <source src="imagens/DrStone.webm" type="video/webm">
+                Seu navegador não suporta vídeos.
+            </video>
+            <div class="iniciocontent">
+                <h1 class="text-light" id="textoinicio">Full Stack Web Developer</h1>
+                <a id="meusprojetos" href="#Projetos"><strong>Meus Projetos</strong></a>
+            </div>
         </section>
         <br><br>
-        <p class="text-center fs-1">Sobre mim:</p>
+        <p class="text-center fs-1 text-white">Sobre mim:</p>
         <br>
         <section class="container">
           <div class="row align-items-center">
@@ -56,17 +55,18 @@
               </div>
               <!-- Coluna do texto -->
               <div class="col-12 col-md-8">
-                <h4 class="liquidglass" id="sobremimtxt">
-                  Olá, meu nome é <strong>Ian Lamartine</strong> e eu sou um webdev fullstacker — uma união entre um back-end robusto e um front-end moderno e responsivo.
-                  Sou uma pessoa organizada, criativa e detalhista, sempre buscando aprender novas tecnologias e aprimorar minhas habilidades.
-                  Gosto de desenvolver interfaces intuitivas, aplicar boas práticas de código e garantir que cada projeto seja bem estruturado e escalável.
+                <h4 class="liquidglass text-white" id="sobremimtxt">
+                Sou um técnico de informática e um desenvolvedor fullstacker python formado pelo Senac. Tenho experiência em manutenção de computadores e tenho habilidades front-end e back-end, graças a esses conhecimentos consegui me aprofundar na framework Django e no uso de APIs, hospedagem, integração de SQL e integração cloud. Frequentemente utilizo o Github então também tenho experiência em ambos o git e Github. Já no front-end utilizo ferramentas como Bootstrap assim posso facilitar a experiência mobile.
+                <br><br>Já fiz alguns projetos fora no aspecto web, como uma ferramenta de automação de produção de vídeos. Porém tenho muito mais experiência no desenvolvimento web como e-commerces e simuladores. Essas oportunidades aperfeiçoaram meu trabalho em equipe.
+                <br><br>Meu objetivo é continuar buscando conhecimento na área da tecnologia, quero aprender novas linguagens e me especializar o máximo que eu puder a cada dia que passa.
+                Estou aberto a qualquer diálogo sobre novas oportunidades nessa área. Caso você esteja interessado pode olhar meus projetos e mais informações no meu portfólio ou Github.
                 </h4>
               </div>
           </div>
         </section>
         <br><br><br>
 <section class="container my-5" id="Projetos">
-  <h2 class="text-center sobremimtxt mb-4">Meus Projetos:</h2>
+  <h2 class="text-center sobremimtxt mb-4 text-white">Meus Projetos:</h2>
   <div id="repos-container" class="row justify-content-center g-4">
     <div class="text-center">
       <p>Carregando projetos...</p>
@@ -74,126 +74,156 @@
   </div>
 </section>
         <br><br><br> 
-  <section>
-    <div id="skills" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5 display-4 fw-bold text-dark">
-                <i class="bi bi-code-slash me-2"></i> Minhas Habilidades Técnicas
-            </h2>
-
-            <div class="row justify-content-center">
-                
-                <div class="col-lg-10">
-                    
-                    <h3 class="mb-4 text-primary fonte">Linguagens & Frameworks</h3>
-                    
-                    <div class="skill-item mb-4">
-                        <div class="d-flex justify-content-between">
-                            <span class="fw-bold">Python</span>
-                            <span class="text-muted">98%</span>
-                        </div>
-                        <div class="progress" style="height: 10px;">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 98%;" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-item mb-4">
-                        <div class="d-flex justify-content-between">
-                            <span class="fw-bold">Django</span>
-                            <span class="text-muted">90%</span>
-                        </div>
-                        <div class="progress" style="height: 10px;">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item mb-4">
-                        <div class="d-flex justify-content-between">
-                            <span class="fw-bold">HTML</span>
-                            <span class="text-muted">98%</span>
-                        </div>
-                        <div class="progress" style="height: 10px;">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 98%;" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-item mb-4">
-                        <div class="d-flex justify-content-between">
-                            <span class="fw-bold">CSS</span>
-                            <span class="text-muted">98%</span>
-                        </div>
-                        <div class="progress" style="height: 10px;">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 98%;" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item mb-4">
-                        <div class="d-flex justify-content-between">
-                            <span class="fw-bold">Bootstrap</span>
-                            <span class="text-muted">98%</span>
-                        </div>
-                        <div class="progress" style="height: 10px;">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 98%;" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-
-<section class="container my-5" id="formacao">
-    <h2 class="text-center mb-5 display-5 fw-bold">
-        <i class="bi bi-mortarboard-fill me-2"></i> Formação Acadêmica
-    </h2>
-
-    <div class="row justify-content-center g-4">
-
-        <!-- CARD FORMAÇÃO -->
-<div class="col-12 col-md-8 col-lg-6">
-    <div class="card formacao-card h-100 shadow-lg">
-        <div class="card-body p-4">
-
-            <div class="d-flex align-items-center mb-3">
-                <div class="icon-formacao me-3">
-                    <i class="bi bi-code-slash"></i>
+<section id="ofa-skills" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 fs-2 fs-md-1 fw-bold text-white">
+            Minhas Individualides:
+        </h2>
+        <div class="ofa-accordion d-none d-lg-flex">
+            <div class="ofa-card" style="--ofa-color: #02e389;">
+                <img src="imagens/deku.jpg" class="ofa-card-img" alt="Deku">
+                <div class="ofa-card-icon">
+                    <img src="imagens/djangologo.png" alt="Django Logo">
                 </div>
-                <div>
-                    <h5 class="card-title mb-0 fw-bold">
-                        Python Full Stack Web Developer
-                    </h5>
-                    <small class="text-muted">
-                        SENAC
-                    </small>
+                <div class="ofa-card-title">
+                    <h3>Django</h3>
+                </div>
+                <div class="ofa-card-content">
+                    <h4>Quirk: Django, framework web.</h4>
+                    <p>É o django que dá vida a um site usando python para back-end, integrando todas as funcionalidades que você precisa. Com ele é possível fazer diversos projetos robustos com segurança de usuários e versátilidade.</p>
                 </div>
             </div>
-
-            <p class="card-text mt-3">
-                Formação completa em desenvolvimento web full stack com
-                <strong>Python</strong>, abrangendo back-end, front-end,
-                integração de sistemas, boas práticas de código e
-                desenvolvimento de aplicações web modernas.
+            <div class="ofa-card" style="--ofa-color: #ffde3a;">
+                <img src="imagens/might.jpg" style="object-position: top center;" class="ofa-card-img" alt="All Might">
+                <div class="ofa-card-icon">
+                    <img src="imagens/pythonlogo.png" alt="Python Logo">
+                </div>
+                <div class="ofa-card-title">
+                    <h3>Python</h3>
+                </div>
+                <div class="ofa-card-content">
+                    <h4>Quirk: Python, linguagem de programação versátil.</h4>
+                    <p>A linguagem versátil capaz de fazer aplicações completas, no meu caso eu utilizo principalmente durante o desenvolvimento usando Django. Pretendo fazer alguns projetos diferentes, assim como a automação de videos que já fiz uma vez.</p>
+                </div>
+            </div>
+            <div class="ofa-card" style="--ofa-color: #00bfff;">
+                <img src="imagens/nana.png" class="ofa-card-img" style="object-position: top center;" alt="Nana Shimura">
+                <div class="ofa-card-icon">
+                    <img src="imagens/htmlogo.png" alt="HTML Logo">
+                </div>
+                <div class="ofa-card-title">
+                    <h3>HTML</h3>
+                </div>
+                <div class="ofa-card-content">
+                    <h4>Quirk: HTML, linguagem de Marcação de Hipertexto</h4>
+                    <p>Ele não é uma linguagem de programação, mas sim uma linguagem de marcação que organiza e estrutura o conteúdo de um site, como textos, imagens e links, para que o navegador consiga exibi-los corretamente.</p>
+                </div>
+            </div>
+            <div class="ofa-card" style="--ofa-color: #bf40ff;">
+                <img src="imagens/en.png" class="ofa-card-img" alt="En">
+                <div class="ofa-card-icon">
+                    <img src="imagens/csslogo.png" alt="CSS Logo">
+                </div>
+                <div class="ofa-card-title">
+                    <h3>CSS</h3>
+                </div>
+                <div class="ofa-card-content">
+                    <h4>Quirk: CSS, Folhas de Estilo em Cascata</h4>
+                    <p>Responsável pelo controle visual, criação de efeitos. Também não é uma linguagem de programação, porém ainda é uma ferramenta front-end.</p>
+                </div>
+            </div>
+            <div class="ofa-card" style="--ofa-color: #ff5900;">
+                <img src="imagens/banjo.png" class="ofa-card-img" style="object-position: top center;" alt="Daigoro Banjo">
+                <div class="ofa-card-icon">
+                    <img src="imagens/bootstraplogo.png" alt="Bootstrap Logo">
+                </div>
+                <div class="ofa-card-title">
+                    <h3>Bootstrap</h3>
+                </div>
+                <div class="ofa-card-content">
+                    <h4>Quirk: Bootstrap, framework front-end</h4>
+                    <p>A ferramenta front-end ágil que estica, amarra e prende todos os elementos do layout de forma maleável ajudando o desenvolvimento mobile first, tornando suas paginas responsivas com pouco esforço.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex d-lg-none justify-content-center align-items-center py-5">
+    <div class="dekutv-container" id="deku-tv-trigger" style="cursor: pointer;">
+        <img src="imagens/dekutv.png" class="dekutv-base" alt="Deku TV">
+        <div class="dekutv-screen">
+            <div class="glitch-wrapper">
+                <img src="imagens/djangologo.png" id="mobile-glitch-logo" class="glitch-logo" alt="Tecnologia" style="--ofa-color: #1bf2bb;">
+                <div class="glitch-scanlines"></div>
+            </div>
+        </div>
+        <div class="dekutv-info-box p-2" id="deku-info-box">
+            <h5 id="info-title" class="mb-0" style="color: #1bf2bb; font-size: 0.85rem;">Desenvolvimento Web Framework Back-end</h5>
+            <h6 id="info-subtitle" class="text-white mb-1 small fw-bold">Django</h6>
+            <p id="info-text" class="text-muted mb-0">
+                É o django que dá vida a um site usando python para back-end, integrando todas as funcionalidades que você precisa. Com ele é possível fazer diversos projetos robustos com segurança de usuários e versátilidade.
             </p>
-
-            <div class="d-flex justify-content-between align-items-center mt-4">
-                <span class="badge bg-success px-3 py-2">
-                    <i class="bi bi-check-circle-fill me-1"></i> Concluído
-                </span>
-
-                <span class="text-muted small">
-                    <i class="bi bi-calendar-event me-1"></i> 2025
-                </span>
-            </div>
-
         </div>
     </div>
 </div>
-
-
-    </div>
 </section>
-                </div>
+<section id="formacao" class="py-5">
+    <div class="container d-flex justify-content-center">      
+        <div class="system-window w-100" style="max-width: 950px;">           
+            <div class="system-window-header text-center">
+                <h2 class="m-0 font-monitoring text-uppercase">
+                    <i class="bi bi-layers-half me-2"></i> FORMAÇÃO ACADÊMICA
+                </h2>
+                <div class="system-header-line"></div>
             </div>
-        </div>
-      </div>
-  </section>
-    </main>
-    <br><br><br>
+            <div class="system-window-body p-3 p-md-4">
+                <div class="accordion system-level-list" id="soloLevelingSystem">
+                    <div class="system-card mb-3">
+                        <div class="system-card-header p-3 d-flex flex-wrap justify-content-between align-items-center" 
+                             data-bs-toggle="collapse" 
+                             data-bs-target="#dungeonRankB" 
+                             aria-expanded="false" 
+                             style="cursor: pointer;">
+                            
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="rank-badge badge-rank-b"><i class="bi bi-code-slash"></i></div>
+                                <div>
+                                    <h5 class="mb-0 text-white fw-bold">Curso FullStack Senac</h5>
+                                    <small class="text-info-system">CURSO TÉCNICO</small>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3 mt-2 mt-sm-0">
+                                <span class="badge text-bg-dark border border-warning-subtle text-uppercase px-2 py-1 small-status">Concluído</span>
+                                <i class="bi bi-chevron-down text-muted arrow-toggle"></i>
+                            </div>
+                        </div>
+                        <div id="dungeonRankB" class="collapse" data-bs-parent="#soloLevelingSystem">
+                            <div class="system-card-body p-4 border-top border-secondary-subtle">
+                                <div class="row g-4">
+                                    <div class="col-12 col-md-8">
+                                        <h6 class="text-uppercase text-white-50 mb-3 small fw-bold"><i class="bi bi-gem"></i> Abilidades Adquiridas:</h6>
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <span class="skill-tag"><i class="bi bi-check2-circle text-warning"></i> Django Framework</span>
+                                            <span class="skill-tag"><i class="bi bi-check2-circle text-warning"></i> Python</span>
+                                            <span class="skill-tag"><i class="bi bi-check2-circle text-warning"></i> HTML e CSS</span>
+                                            <span class="skill-tag"><i class="bi bi-check2-circle text-warning"></i> Deploy</span>
+                                            <span class="skill-tag"><i class="bi bi-check2-circle text-warning"></i> Manipulação Rest API</span>
+                                        </div>
+                                        <p class="text-white small mt-3 mb-0">
+                                            Formação completa em desenvolvimento web full stack com <strong>Python</strong>, abrangendo back-end, front-end, boas práticas de código e desenvolvimento de aplicações web modernas.<br><strong>Projeto final (Clique para acessar o repositório): </strong><a href="https://github.com/IanSeedd/CoolKeys" class="text-white medium">CoolKeys</a>
+                                        </p>
+                                    </div>
+                                    <div class="col-12 col-md-4 d-flex align-items-center justify-content-md-end justify-content-start">
+                                        <a href="documentos/certificado_django.pdf" target="_blank" class="btn btn-system-action text-uppercase w-100 w-md-auto">
+                                            <i class="bi bi-download"></i> Inspecionar Relatório (baixar PDF)
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> </div> </div>
+</section>
 
 <footer class="footer mt-5">
   <br><br>
