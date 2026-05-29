@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IanLamartine-WebDev</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="theme.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <script src="script.js" defer></script>
 </head>
 <body id="background">
+    <audio id="audio-rezero" src="imagens/extra/rezero.mp3" preload="auto"></audio>
+
+<button id="btn-topo" class="btn-retornar-topo" title="Voltar ao topo">
+    <i class="bi bi-arrow-up-short"></i>
+</button>
     <header>
-        <nav class="navbar navbar-expand-lg" id="navegacao">
+        <nav class="navbar navbar-expand-lg navegacao">
             <div class="container-fluid">
               <a class="navbar-brand text-light" id="titulo" href="#">IanLamartine</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,10 +26,16 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active text-light" aria-current="page" href="#sobremimtxt">SobreMim</a>
+                    <a class="nav-link active text-light" aria-current="page" href="#sobremim">SobreMim</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link text-light" href="#ofa-skills">Habilidades</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="#formacao">Formação</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="#contatos">Contato</a>
                   </li>
                 </ul>
               </div>
@@ -41,345 +50,354 @@
             </video>
             <div class="iniciocontent">
                 <h1 class="text-light" id="textoinicio">Full Stack Web Developer</h1>
-                <a id="meusprojetos" href="#Projetos"><strong>Meus Projetos</strong></a>
+                <a id="meusprojetos" href="#projetos-pasta"><strong>Meus Projetos</strong></a>
             </div>
         </section>
         <br><br>
-        <p class="text-center fs-1 text-white">Sobre mim:</p>
-        <br>
-        <section class="container">
-          <div class="row align-items-center">
+        <section class="container" id="sobremim">
+          <div class="row align-items-center liquidglass">
             <!-- Coluna da imagem -->
-              <div class="col-12 col-md-4 text-center">
-                <img class="rounded-circle img-fluid" id="pfp" alt="foto-de-perfil">
-              </div>
+
+                <div class="col-12 col-md-5 col-lg-4 text-center">
+                <div class="sobremim-layers-container">
+                    <!-- Camada 1: O Cenário/Fundo -->
+                    <img src="imagens/layers/fundo.png" class="layer-base-fundo" alt="Cenário de Fundo">
+                    <!-- Camada 2.5: Krookodile -->
+                    <img src="imagens/layers/krookodile.gif" class="layer-krookodile" alt="Krookodile">
+                    <!-- Camada 2: Eu -->
+                    <img src="imagens/layers/eu.png" class="layer-eu" alt="Ian Lamartine">
+                    <!-- Camada 3: Mudkip -->
+                    <img src="imagens/layers/mudkip.gif" class="layer-mudkip" alt="Mudkip">
+                </div>
+                </div>
               <!-- Coluna do texto -->
-              <div class="col-12 col-md-8">
-                <h4 class="liquidglass text-white" id="sobremimtxt">
-                Sou um técnico de informática e um desenvolvedor fullstacker python formado pelo Senac. Tenho experiência em manutenção de computadores e tenho habilidades front-end e back-end, graças a esses conhecimentos consegui me aprofundar na framework Django e no uso de APIs, hospedagem, integração de SQL e integração cloud. Frequentemente utilizo o Github então também tenho experiência em ambos o git e Github. Já no front-end utilizo ferramentas como Bootstrap assim posso facilitar a experiência mobile.
-                <br><br>Já fiz alguns projetos fora no aspecto web, como uma ferramenta de automação de produção de vídeos. Porém tenho muito mais experiência no desenvolvimento web como e-commerces e simuladores. Essas oportunidades aperfeiçoaram meu trabalho em equipe.
-                <br><br>Meu objetivo é continuar buscando conhecimento na área da tecnologia, quero aprender novas linguagens e me especializar o máximo que eu puder a cada dia que passa.
-                Estou aberto a qualquer diálogo sobre novas oportunidades nessa área. Caso você esteja interessado pode olhar meus projetos e mais informações no meu portfólio ou Github.
-                </h4>
-              </div>
+                <div class="col-12 col-md-7 col-lg-8 ps-md-5">
+                <h2 class="sobremim-titulo">Sobre mim:</h2>
+                <div id="sobremimtxt">
+                    Oi! Eu sou o Ian e administro o <a href="https://www.instagram.com/kyoka.dev/" class="sobremim-link" target="_blank" rel="noopener noreferrer">KyokaDev</a>!<br>
+                    Sempre fui um entusiasta da tecnologia, porém só comecei a programar de fato em 2025 e acabei viciando depois de perceber que não era tão difícil quanto eu achava que era quando tinha 9 anos...<br><br>
+                    Enfim atualmente eu sou um <strong class="txt-strong txt-destaque">webdev fullstacker</strong>, porém posso dizer que tenho mais afinidade com o backend já que eu gosto da dificuldade e já trabalhei com alguns projetos diferentes como uma automação de cortes para youtube shorts e me arrisquei com machine learning tentando fazer um bot que joga pokemon showdown. Pretendo fazer uma faculdade de TI em 2027 e também quero continuar fazendo o máximo de cursos que eu puder!<br><br>
+                    Convido você a acompanhar meu trabalho na aba de <a href="#projetos-pasta" class="sobremim-link">projetos</a>, estou aberto a novas oportunidades na área de tecnologia então pode me <a href="#contatos" class="sobremim-link">contatar</a> mesmo que seja apenas para deixar seu feedback!
+                </div>
+                </div>
           </div>
         </section>
-        <br><br><br>
-<section class="container my-5" id="Projetos">
-  <h2 class="text-center sobremimtxt mb-4 text-white">Meus Projetos:</h2>
-  <div id="repos-container" class="row justify-content-center g-4">
-    <div class="text-center">
-      <p>Carregando projetos...</p>
+<section id="projetos-pasta" class="py-5">
+    <div class="container d-flex justify-content-center">
+        <div class="folder-container w-100">
+            <div class="folder-tabs d-flex">
+                <div class="folder-tab" data-index="0">
+                    <!-- Computador: Texto | Mobile: Ícone de Cookie -->
+                    <span class="d-none d-md-inline">Coolkeys</span>
+                    <i class="bi bi-cookie d-inline d-md-none fs-5"></i>
+                </div>
+                <div class="folder-tab" data-index="1">
+                    <span class="d-none d-md-inline">BattleDex</span>
+                    <i class="bi bi-controller d-inline d-md-none fs-5"></i>
+                </div>
+                <div class="folder-tab active" data-index="2">
+                    <!-- Computador: Texto | Mobile: Ícone de Livro -->
+                    <span class="d-none d-md-inline">OhLala!</span>
+                    <i class="bi bi-book d-inline d-md-none fs-5"></i>
+                </div>
+            </div>
+
+            <div class="folder-card p-4 position-relative">
+                
+                <div class="folder-header d-flex justify-content-between align-items-center mb-4">
+                    <button class="btn-folder-arrow" id="btn-prev-project" aria-label="Projeto Anterior">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    
+                    <h3 class="folder-project-title m-0 text-uppercase" id="project-title">CoolKeys</h3>
+                    
+                    <button class="btn-folder-arrow" id="btn-next-project" aria-label="Próximo Projeto">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="folder-content row g-4">
+    
+    <div class="col-12 col-lg-8">
+        <div class="folder-image-wrapper">
+            <img src="imagens/projetos/coolkeys.webp" id="project-image" alt="Preview do Projeto" class="img-fluid folder-img">
+        </div>
     </div>
-  </div>
+    
+    <div class="col-12 col-lg-4">
+        <div class="p-3 h-100 d-flex flex-column justify-content-center">      
+            <div class="meta-item mb-3">
+                <span class="meta-label d-block text-uppercase text-white-50">Data de Criação:</span>
+                <span class="meta-value text-white fw-bold" id="project-date">2025</span>
+            </div>          
+            <div class="meta-item mb-3">
+                <span class="meta-label d-block text-uppercase text-white-50">Status:</span>
+                <span class="badge bg-success-subtle text-success border border-success-subtle text-uppercase font-monospace px-2 py-1" id="project-status">Concluído</span>
+            </div>          
+            <div class="meta-item">
+                <span class="meta-label d-block text-uppercase text-white-50">Autoria:</span>
+                <div id="project-authors" class="meta-value">
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 mt-3 position-relative">
+        <div class="silverwolf">
+            <img src="imagens/extra/silverwolf.png" alt="Silver Wolf Mascote" class="silverwolf-img">
+        </div>
+    </div>
+    <div class="col-12 mt-4">
+        <div class="folder-description-box p-3">
+            <h5 class="text-white mb-2"><i class="bi bi-file-earmark-text me-2"></i> Resumo :</h5>
+            <p class="text-white-50 mb-4" id="project-description">
+                Coolkeys é um e-commerce de jogos criado exclusivamente para o projeto final de um curso do senac, a plataforma foi inspirada na Nuuvem. Eu trabalhei no backend e ainda pretendo adicionar algumas features que eu não adicionei a tempo junto com o Dudss2007, caso queira saber mais do projeto leia o readme.
+            </p>
+            <a href="https://github.com/IanSeedd/CoolKeys" target="_blank" id="project-link" class="btn btn-folder-action w-100 text-uppercase">
+                <i class="bi bi-git me-2"></i> Abrir Repositório
+            </a>
+        </div>
+    </div>
+</div>
+
+            </div> </div>
+    </div>
 </section>
-        <br><br><br> 
 <section id="ofa-skills" class="py-5">
     <div class="container">
         <h2 class="text-center mb-5 fs-2 fs-md-1 fw-bold text-white">
             Minhas Individualides:
         </h2>
-        <div class="ofa-accordion d-none d-lg-flex">
-            <div class="ofa-card" style="--ofa-color: #02e389;">
-                <img src="imagens/deku.jpg" class="ofa-card-img" alt="Deku">
-                <div class="ofa-card-icon">
-                    <img src="imagens/djangologo.png" alt="Django Logo">
-                </div>
-                <div class="ofa-card-title">
-                    <h3>Django</h3>
-                </div>
-                <div class="ofa-card-content">
-                    <h4>Quirk: Django, framework web.</h4>
-                    <p>É o django que dá vida a um site usando python para back-end, integrando todas as funcionalidades que você precisa. Com ele é possível fazer diversos projetos robustos com segurança de usuários e versátilidade.</p>
-                </div>
-            </div>
-            <div class="ofa-card" style="--ofa-color: #ffde3a;">
-                <img src="imagens/might.jpg" style="object-position: top center;" class="ofa-card-img" alt="All Might">
-                <div class="ofa-card-icon">
-                    <img src="imagens/pythonlogo.png" alt="Python Logo">
-                </div>
-                <div class="ofa-card-title">
-                    <h3>Python</h3>
-                </div>
-                <div class="ofa-card-content">
-                    <h4>Quirk: Python, linguagem de programação versátil.</h4>
-                    <p>A linguagem versátil capaz de fazer aplicações completas, no meu caso eu utilizo principalmente durante o desenvolvimento usando Django. Pretendo fazer alguns projetos diferentes, assim como a automação de videos que já fiz uma vez.</p>
-                </div>
-            </div>
-            <div class="ofa-card" style="--ofa-color: #00bfff;">
-                <img src="imagens/nana.png" class="ofa-card-img" style="object-position: top center;" alt="Nana Shimura">
-                <div class="ofa-card-icon">
-                    <img src="imagens/htmlogo.png" alt="HTML Logo">
-                </div>
-                <div class="ofa-card-title">
-                    <h3>HTML</h3>
-                </div>
-                <div class="ofa-card-content">
-                    <h4>Quirk: HTML, linguagem de Marcação de Hipertexto</h4>
-                    <p>Ele não é uma linguagem de programação, mas sim uma linguagem de marcação que organiza e estrutura o conteúdo de um site, como textos, imagens e links, para que o navegador consiga exibi-los corretamente.</p>
-                </div>
-            </div>
-            <div class="ofa-card" style="--ofa-color: #bf40ff;">
-                <img src="imagens/en.png" class="ofa-card-img" alt="En">
-                <div class="ofa-card-icon">
-                    <img src="imagens/csslogo.png" alt="CSS Logo">
-                </div>
-                <div class="ofa-card-title">
-                    <h3>CSS</h3>
-                </div>
-                <div class="ofa-card-content">
-                    <h4>Quirk: CSS, Folhas de Estilo em Cascata</h4>
-                    <p>Responsável pelo controle visual, criação de efeitos. Também não é uma linguagem de programação, porém ainda é uma ferramenta front-end.</p>
-                </div>
-            </div>
-            <div class="ofa-card" style="--ofa-color: #ff5900;">
-                <img src="imagens/banjo.png" class="ofa-card-img" style="object-position: top center;" alt="Daigoro Banjo">
-                <div class="ofa-card-icon">
-                    <img src="imagens/bootstraplogo.png" alt="Bootstrap Logo">
-                </div>
-                <div class="ofa-card-title">
-                    <h3>Bootstrap</h3>
-                </div>
-                <div class="ofa-card-content">
-                    <h4>Quirk: Bootstrap, framework front-end</h4>
-                    <p>A ferramenta front-end ágil que estica, amarra e prende todos os elementos do layout de forma maleável ajudando o desenvolvimento mobile first, tornando suas paginas responsivas com pouco esforço.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex d-lg-none justify-content-center align-items-center py-5">
-    <div class="dekutv-container" id="deku-tv-trigger" style="cursor: pointer;">
-        <img src="imagens/dekutv.png" class="dekutv-base" alt="Deku TV">
-        <div class="dekutv-screen">
-            <div class="glitch-wrapper">
-                <img src="imagens/djangologo.png" id="mobile-glitch-logo" class="glitch-logo" alt="Tecnologia" style="--ofa-color: #1bf2bb;">
-                <div class="glitch-scanlines"></div>
-            </div>
-        </div>
-        <div class="dekutv-info-box p-2" id="deku-info-box">
-            <h5 id="info-title" class="mb-0" style="color: #1bf2bb; font-size: 0.85rem;">Desenvolvimento Web Framework Back-end</h5>
-            <h6 id="info-subtitle" class="text-white mb-1 small fw-bold">Django</h6>
-            <p id="info-text" class="text-muted mb-0">
-                É o django que dá vida a um site usando python para back-end, integrando todas as funcionalidades que você precisa. Com ele é possível fazer diversos projetos robustos com segurança de usuários e versátilidade.
-            </p>
-        </div>
-    </div>
-</div>
-</section>
-<section id="formacao" class="py-5">
-    <div class="container d-flex justify-content-center">
-        
-        <div class="chalkboard-window w-100">
-            
-            <div class="chalkboard-frame">
-                
-                <div class="chalkboard-header text-center">
-                    <h2 class="m-0 text-uppercase">
-                        <i class="bi bi-journal-code me-2"></i> Formação Acadêmica
-                    </h2>
-                    <div class="chalk-line"></div>
-                </div>
-
-                <div class="chalkboard-body p-3 p-md-4">
-                    
-                    <div class="accordion chalk-level-list" id="soloLevelingSystem">
-                        
-                        <div class="chalk-card mb-4">
-                            <div class="chalk-card-header p-3 d-flex flex-wrap justify-content-between align-items-center" 
-                                 data-bs-toggle="collapse" 
-                                 data-bs-target="#dungeonRankB" 
-                                 aria-expanded="false" 
-                                 style="cursor: pointer;">
-                                
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="chalk-badge"><i class="bi bi-code-slash"></i></div>
-                                    <div>
-                                        <h5 class="mb-0 text-white fw-bold">Curso FullStack Senac</h5>
-                                        <small class="text-chalk-sub">CURSO TÉCNICO</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center gap-3 mt-2 mt-sm-0">
-                                    <span class="badge badge-chalk-status text-uppercase px-2 py-1">Concluído</span>
-                                    <i class="bi bi-chevron-down text-muted arrow-toggle"></i>
-                                </div>
-                            </div>
-                            
-                            <div id="dungeonRankB" class="collapse" data-bs-parent="#soloLevelingSystem">
-                                <div class="chalk-card-body p-4">
-                                    <div class="row g-4">
-                                        <div class="col-12 col-md-8 style-chalk-text">
-                                            <div class="d-none">
-                                            <h6 class="text-uppercase mb-3 fw-bold"><i class="bi bi-lightbulb"></i> Habilidades Adquiridas:</h6>
-                                            <div class="d-flex flex-wrap gap-2">
-                                                <span class="chalk-tag">Django Framework</span>
-                                                <span class="chalk-tag">Python</span>
-                                                <span class="chalk-tag">HTML e CSS</span>
-                                                <span class="chalk-tag">Deploy</span>
-                                                <span class="chalk-tag">Manipulação Rest API</span>
-                                            </div>
-                                            </div>
-                                            <p class="small mt-3 mb-0">
-                                                Formação completa em desenvolvimento web full stack com <strong>Python</strong>, abrangendo back-end, front-end, boas práticas de código e desenvolvimento de aplicações web modernas.<br>
-                                                <strong>Projeto final (Clique para acessar o repositório): </strong>
-                                                <a href="https://github.com/IanSeedd/CoolKeys" target="_blank" class="chalk-link">CoolKeys</a>
-                                            </p>
-                                        </div>
-                                        <div class="col-12 col-md-4 d-flex align-items-center justify-content-md-end justify-content-start">
-                                            <a href="imagens/senacdiploma.pdf" target="_blank" class="btn btn-chalk-action text-uppercase w-100 w-md-auto">
-                                                <i class="bi bi-download"></i> Baixar Certificado (.PDF)
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> </div>
-                        </div> 
-                    </div> <div class="tesla-chalk-art">
-                        <img src="imagens/Tesla2.png" alt="Nikola Tesla Chalk Art" class="tesla-img">
+        <!-- Versão PC: -->
+        <div class="d-none d-lg-flex flex-column w-100">    
+            <!-- 1. O Accordion One For All -->
+            <div class="ofa-accordion">
+                <div class="ofa-card" style="--ofa-color: #02e389;">
+                    <img src="imagens/indiv/deku.jpg" class="ofa-card-img" alt="Deku">
+                    <div class="ofa-card-icon">
+                        <img src="imagens/tech/djangologo.png" alt="Django Logo">
                     </div>
-            </div> </div> 
-</section>
-
-<footer class="footer mt-5">
-  <br><br>
-    <h3 class="footer-title">Contatos</h3>
-
-    <div class="footer-icons d-flex justify-content-center gap-4 mt-4">
-
-        <a href="https://github.com/IanSeedd" 
-           target="_blank" 
-           class="footer-link">
-            <i class="bi bi-github"></i>
-        </a>
-
-        <a href="https://wa.me/5521987505187" 
-           target="_blank" 
-           class="footer-link">
-            <i class="bi bi-whatsapp"></i>
-        </a>
-
-    </div>
-
-    <p class="footer-copy mt-4">© 2025 - Desenvolvido por Ian Lamartine</p>
-</footer>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
-<script>
-const username = 'IanSeedd';
-const container = document.getElementById('repos-container');
-const profileImg = document.getElementById('pfp');
-
-// ====== BUSCAR DADOS DO USUÁRIO (FOTO) ======
-async function getProfile() {
-    try {
-        const res = await fetch(`https://api.github.com/users/${username}`);
-        const user = await res.json();
-        profileImg.src = user.avatar_url;
-    } catch (e) {
-        console.error("Erro ao carregar perfil:", e);
-    }
-}
-
-// ====== BUSCAR IMAGEM DO README (SE EXISTIR) ======
-async function getReadmeImage(repoName) {
-    try {
-        const res = await fetch(
-            `https://api.github.com/repos/${username}/${repoName}/readme`
-        );
-
-        if (!res.ok) return null;
-
-        const data = await res.json();
-        const content = atob(data.content);
-
-        const match = content.match(/!\[.*?\]\((.*?)\)/);
-        if (!match) return null;
-
-        let imageUrl = match[1];
-
-        // se for caminho relativo
-        if (!imageUrl.startsWith('http')) {
-            imageUrl = `https://raw.githubusercontent.com/${username}/${repoName}/main/${imageUrl}`;
-        }
-
-        return imageUrl;
-    } catch {
-        return null;
-    }
-}
-
-// ====== BUSCAR REPOSITÓRIOS ======
-async function getRepos() {
-    try {
-        const response = await fetch(
-            `https://api.github.com/users/${username}/repos?sort=updated&per_page=9`
-        );
-        let repos = await response.json();
-
-        // 🔥 FILTROS IMPORTANTES (MANTIDOS)
-        repos = repos.filter(repo =>
-            !repo.fork &&
-            !repo.name.toLowerCase().includes('portfolio') &&
-            !repo.name.toLowerCase().includes('site')
-        );
-
-        container.innerHTML = '';
-
-        for (const repo of repos) {
-            const fallbackImage =
-                `https://opengraph.githubassets.com/1/${username}/${repo.name}`;
-
-            const readmeImage = await getReadmeImage(repo.name);
-            const repoImage = readmeImage || fallbackImage;
-
-            const card = `
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm">
-                        <img 
-                            src="${repoImage}" 
-                            class="card-img-top"
-                            alt="Imagem do repositório ${repo.name}"
-                        >
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title text-primary">${repo.name}</h5>
-                            <p class="card-text flex-grow-1">
-                                ${repo.description || "Sem descrição disponível."}
-                            </p>
-                            <a href="${repo.html_url}" 
-                               target="_blank" 
-                               class="btn btn-outline-dark mt-3">
-                               Ver Repositório
-                            </a>
+                    <div class="ofa-card-title">
+                        <h3>Django</h3>
+                    </div>
+                    <div class="ofa-card-content">
+                        <h4>Quirk: Django, framework web.</h4>
+                        <p>É o django que dá vida a um site usando python para back-end, integrando todas as funcionalidades que você precisa. Com ele é possível fazer diversos projetos robustos com segurança de usuários e versátilidade.</p>
+                    </div>
+                </div>       
+                <div class="ofa-card" style="--ofa-color: #ffde3a;">
+                    <img src="imagens/indiv/might.jpg" style="object-position: top center;" class="ofa-card-img" alt="All Might">
+                    <div class="ofa-card-icon">
+                        <img src="imagens/tech/pythonlogo.png" alt="Python Logo">
+                    </div>
+                    <div class="ofa-card-title">
+                        <h3>Python</h3>
+                    </div>
+                    <div class="ofa-card-content">
+                        <h4>Quirk: Python, linguagem de programação versátil.</h4>
+                        <p>A linguagem versátil capaz de fazer aplicações completas, no meu caso eu utilizo principalmente durante o desenvolvimento usando Django. Pretendo fazer alguns projetos diferentes, assim como a automação de videos que já fiz uma vez.</p>
+                    </div>
+                </div>        
+                <div class="ofa-card" style="--ofa-color: #00bfff;">
+                    <img src="imagens/indiv/nana.png" class="ofa-card-img" style="object-position: top center;" alt="Nana Shimura">
+                    <div class="ofa-card-icon">
+                        <img src="imagens/tech/htmlogo.png" alt="HTML Logo">
+                    </div>
+                    <div class="ofa-card-title">
+                        <h3>HTML</h3>
+                    </div>
+                    <div class="ofa-card-content">
+                        <h4>Quirk: HTML, linguagem de Marcação de Hipertexto</h4>
+                        <p>Ele não é uma linguagem de programação, mas sim uma linguagem de marcação que organiza e estrutura o conteúdo de um site, como textos, imagens e links, para que o navegador consiga exibi-los corretamente.</p>
+                    </div>
+                </div>        
+                <div class="ofa-card" style="--ofa-color: #bf40ff;">
+                    <img src="imagens/indiv/en.png" class="ofa-card-img" alt="En">
+                    <div class="ofa-card-icon">
+                        <img src="imagens/tech/csslogo.png" alt="CSS Logo">
+                    </div>
+                    <div class="ofa-card-title">
+                        <h3>CSS</h3>
+                    </div>
+                    <div class="ofa-card-content">
+                        <h4>Quirk: CSS, Folhas de Estilo em Cascata</h4>
+                        <p>Responsável pelo controle visual, criação de efeitos. Também não é uma linguagem de programação, porém ainda é uma ferramenta front-end.</p>
+                    </div>
+                </div>
+                <div class="ofa-card" style="--ofa-color: #ff5900;">
+                    <img src="imagens/indiv/banjo.png" class="ofa-card-img" style="object-position: top center;" alt="Daigoro Banjo">
+                    <div class="ofa-card-icon">
+                        <img src="imagens/tech/bootstraplogo.png" alt="Bootstrap Logo">
+                    </div>
+                    <div class="ofa-card-title">
+                        <h3>Bootstrap</h3>
+                    </div>
+                    <div class="ofa-card-content">
+                        <h4>Quirk: Bootstrap, framework front-end</h4>
+                        <p>A ferramenta front-end ágil que estica, amarra e prende todos os elementos do layout de forma maleável ajudando o desenvolvimento mobile first, tornando suas paginas responsivas com pouco esforço.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 2. A Caixa de Tecnologias Extras -->
+            <div class="tech-extras-container mt-4 p-4 liquidglass text-center">
+                <h5 class="extras-titulo mb-4">Outras Tecnologias & Cloud</h5>
+                <div class="extras-grid d-flex justify-content-center gap-4 flex-wrap">
+                    <div class="extra-item-wrapper" data-tech="Git">
+                        <div class="extra-icon-box" style="--shadow-color: #F05032;">
+                            <img src="imagens/tech/git.webp" alt="Git" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="extra-item-wrapper" data-tech="NeonSQL">
+                        <div class="extra-icon-box" style="--shadow-color: #00E599;">
+                            <img src="imagens/tech/neon.webp" alt="NeonSQL" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="extra-item-wrapper" data-tech="Cloudinary">
+                        <div class="extra-icon-box" style="--shadow-color: #3448C5;">
+                            <img src="imagens/tech/cloudinary.webp" alt="Cloudinary" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="extra-item-wrapper" data-tech="Render">
+                        <div class="extra-icon-box" style="--shadow-color: #46E3B7;">
+                            <img src="imagens/tech/render.webp" alt="Render" class="img-fluid">
                         </div>
                     </div>
                 </div>
-            `;
-            container.innerHTML += card;
-        }
+            </div>
+        </div>
+    </div>
+    <!-- Versão mobile: -->
+    <div class="d-flex d-lg-none justify-content-center align-items-center py-5 position-relative w-100">
+        
+        <div class="marquee-faixa fita-diagonal-1">
+            <div class="marquee-track" id="fita-texto-1">Django Django Django Django Django Django Django Django Django Django Django Django Django Django Django</div>
+        </div>
+        <div class="marquee-faixa fita-diagonal-2">
+            <div class="marquee-track" id="fita-texto-2">Django Django Django Django Django Django Django Django Django Django Django Django Django Django Django</div>
+        </div>
 
-        if (repos.length === 0) {
-            container.innerHTML = `
-                <p class="text-center text-muted">
-                    Nenhum projeto público disponível.
+        <div class="dekutv-container" id="deku-tv-trigger" style="cursor: pointer;">
+            <img src="imagens/indiv/dekutv.png" class="dekutv-base" alt="Deku TV">
+            <div class="dekutv-screen">
+                <div class="glitch-wrapper">
+                    <img src="imagens/tech/djangologo.png" id="mobile-glitch-logo" class="glitch-logo" alt="Tecnologia" style="--ofa-color: #1bf2bb;">
+                    <div class="glitch-scanlines"></div>
+                </div>
+            </div>
+            <div class="dekutv-info-box p-2" id="deku-info-box">
+                <h5 id="info-title" class="mb-0" style="color: #1bf2bb; font-size: 0.85rem;">Desenvolvimento Web Framework Back-end</h5>
+                <h6 id="info-subtitle" class="text-white mb-1 small fw-bold">Django</h6>
+                <p id="info-text" class="text-muted mb-0">
+                    É o django que dá vida a um site usando python para back-end, integrando todas as funcionalidades que você precisa. Com ele é possível fazer diversos projetos robustos com segurança de usuários e versátilidade.
                 </p>
-            `;
-        }
+            </div>
+        </div>
 
-    } catch (error) {
-        console.error("Erro ao buscar repositórios:", error);
-        container.innerHTML = `
-            <p class="text-danger text-center">
-                Não foi possível carregar os projetos.
-            </p>
-        `;
-    }
-}
+        <div class="marquee-faixa fita-horizontal-frente">
+            <div class="marquee-track" id="fita-texto-3">Django Django Django Django Django Django Django Django Django Django Django Django Django Django Django</div>
+        </div>
 
-// ====== INIT ======
-getProfile();
-getRepos();
-</script>
+    </div>
+
+</section>
+    <section id="formacao" class="py-5">
+        <div class="container d-flex justify-content-center">       
+            <div class="chalkboard-window w-100">               
+                <div class="chalkboard-frame"> 
+                    <div class="chalkboard-header text-center">
+                        <h2 class="m-0 text-uppercase">
+                            <i class="bi bi-journal-code me-2"></i> Formação Acadêmica
+                        </h2>
+                        <div class="chalk-line"></div>
+                    </div>
+                    <div class="chalkboard-body p-3 p-md-4">
+                        <div class="chalk-level-list">             
+                            <div class="chalk-card mb-4">
+                                <div class="chalk-card-header p-3 d-flex flex-wrap justify-content-between align-items-center" >                               
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="chalk-badge"><i class="bi bi-code-slash"></i></div>
+                                        <div>
+                                            <h5 class="mb-0 text-white fw-bold">Curso FullStack Senac</h5>
+                                            <small class="text-chalk-sub">CURSO TÉCNICO</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-3 mt-2 mt-sm-0">
+                                        <span class="badge badge-chalk-status text-uppercase px-2 py-1">Concluído</span>
+                                        <i class="bi bi-chevron-down text-muted arrow-toggle"></i>
+                                    </div>
+                                </div>                           
+                                    <div class="chalk-card-body p-4">
+                                        <div class="row g-4">
+                                            <div class="col-12 col-md-8 style-chalk-text">
+                                                <div class="d-none d-md-block">
+                                                    <h6 class="text-uppercase mb-3 fw-bold"><i class="bi bi-lightbulb"></i> Habilidades Adquiridas:</h6>
+                                                    <div class="d-flex flex-wrap gap-2">
+                                                        <span class="chalk-tag">Django Framework</span>
+                                                        <span class="chalk-tag">Python</span>
+                                                        <span class="chalk-tag">HTML e CSS</span>
+                                                        <span class="chalk-tag">Deploy</span>
+                                                        <span class="chalk-tag">APIs</span>
+                                                    </div>
+                                                </div>
+                                                <p class="small mt-3 mb-0">
+                                                    Formação completa em desenvolvimento web full stack com <strong>Python</strong>, abrangendo back-end, front-end, boas práticas de código e desenvolvimento de aplicações web modernas.<br>
+                                                    <strong>Projeto final (Clique para acessar o repositório): </strong>
+                                                    <a href="https://github.com/IanSeedd/CoolKeys" target="_blank" class="chalk-link">CoolKeys</a>
+                                                </p>
+                                            </div>
+                                            <div class="col-12 col-md-4 d-flex align-items-center justify-content-md-end justify-content-start">
+                                                <a href="imagens/senacdiploma.pdf" target="_blank" class="btn btn-chalk-action text-uppercase w-100 w-md-auto">
+                                                    <i class="bi bi-download"></i> Visualizar Certificado (.PDF)
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div> </div>
+                            </div> 
+                        </div> <div class="tesla-chalk-art">
+                            <img src="imagens/extra/tesla.png" alt="Nikola Tesla Chalk Art" class="tesla-img">
+                        </div>
+                </div> </div> 
+    </section>
+<footer class="footer-css mt-5" id="contatos">
+    <div class="container footer-conteudo">
+        <h3 class="footer-title">Contatos</h3>
+        <div class="footer-icons d-flex justify-content-center gap-4 mt-4">
+            <a href="https://github.com/IanSeedd" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="footer-link">
+                <i class="bi bi-github"></i>
+            </a>
+            <a href="https://wa.me/5521987505187" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="footer-link">
+                <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/ianlamartine/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="footer-link">
+                <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://www.instagram.com/kyoka.dev/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="footer-link">
+                <i class="bi bi-instagram"></i>
+            </a>
+        </div>
+
+        <p class="footer-copy mt-4">© 2025 - Desenvolvido por Ian Lamartine</p>
+    </div>
+
+    <div class="footer-video-container">
+        <video autoplay loop muted playsinline class="footer-video-clip">
+            <source src="imagens/konosuba.webm" type="video/webm">
+        </video>
+    </div>
+</footer>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>

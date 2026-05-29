@@ -1,60 +1,76 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
-.body{
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden !important;
     scroll-behavior: smooth;
 }
-.fonte{
-    font-size: 2rem;
+
+.fonte { font-size: 2rem; }
+
+#background {
+    background-color: #23272a;
+    width: 100%;
+    position: relative;
 }
-#background{
-    background-color: #23272a ;
-}
-#navegacao{
-    background-color: #4e5d94;
-}
-#sobremim{
+
+.navegacao { background-color: #4e5d94; }
+
+#sobremim {
     gap: 5%;
     align-items: center;
 }
-#titulo{
+
+#titulo {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.7rem;
 }
-.liquidglass{
-    background-color: rgba(187, 199, 214, 0.15);
+
+/* Efeito de vidro com gradiente animado */
+.liquidglass {
     backdrop-filter: blur(10px);
-    border-radius: 1vw;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 2%;
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    background-image:
+        linear-gradient(rgba(187,199,214,0.10), rgba(187,199,214,0.10)),
+        linear-gradient(45deg, #4e5d94, #2c313f, #502f9e, #1c2135, #ff007f);
+    background-size: 400% 400%;
+    animation: lavaLamp 16s ease infinite;
 }
+
+@keyframes lavaLamp {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 #inicio {
     position: relative;
-    background: linear-gradient(rgba(78, 93, 148), transparent);
+    background: linear-gradient(rgba(78,93,148), transparent);
     padding-top: 12%;
     padding-bottom: 35%;
     display: flex;
-    align-items: center; /* Alinha verticalmente a div de conteúdo */
+    align-items: center;
 }
 
 #backinicio {
     z-index: -1;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
 }
 
-/* A CLASSE GERAL */
 .iniciocontent {
     position: absolute;
-    left: 5%; 
+    left: 5%;
     top: 50%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
-    gap: 25px; 
+    align-items: flex-start;
+    gap: 25px;
     font-family: monospace;
 }
 
@@ -62,312 +78,393 @@
     font-family: 'Press Start 2P', Cursive;
     letter-spacing: 1px;
     font-size: 3vw;
-    margin: 0; 
+    margin: 0;
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid #bec4ca;
-    animation: typing 2s steps(24),
-    cursor .4s step-end infinite alternate;
-}
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 24ch; } 
-}
-@keyframes blink {
-    50% { border-color: transparent; }
+    animation: typing 2s steps(24), cursor .4s step-end infinite alternate;
 }
 
 #meusprojetos {
-    /* REMOVIDO position: absolute e top/left antigos */
-    display: inline-block; /* Garante que o padding funcione perfeitamente */
+    display: inline-block;
     font-family: monospace;
-    color: rgb(240, 243, 247);
+    color: rgb(240,243,247);
     font-size: 130%;
     text-decoration: none;
     background-color: #2c2f33;
     backdrop-filter: blur(5px);
     border-radius: 1vw;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     overflow: hidden;
-    padding: 0.6vw 3vw; 
+    padding: 0.6vw 3vw;
     transition: all 0.4s ease;
 }
 #meusprojetos:hover {
     background: linear-gradient(to bottom right, #4e5d94, #7289da, #ffffff);
-    border-color: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255,255,255,0.6);
     color: #ffffff;
     transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 195, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0,195,255,0.3);
 }
-/* ==================== RESPONSIVIDADE (MOBILE) ==================== */
+
 @media (max-width: 768px) {
     #inicio {
-        padding-top: 30%;     /* Aumenta o tamanho vertical do banner no celular */
-        padding-bottom: 80%;  /* Garante que o container fique esticado para o vídeo */
+        padding-top: 30%;
+        padding-bottom: 80%;
         padding-left: 5%;
     }
-
     #textoinicio {
-        left: 5%;
-        top: 30%;
-        font-size: 4.5vw;     /* Mantém o texto em uma escala legível no mobile */
-        white-space: normal;  /* Permite que o texto quebre linha se a tela for muito pequena */
-        border-right: none;   /* Opcional: desativa a barra piscando se quebrar linha */
-        animation: none;      /* Desativa a animação de digitação fixa que dependia de caracteres na mesma linha */
+        left: 5%; top: 30%;
+        font-size: 4.5vw;
+        white-space: normal;
+        border-right: none;
+        animation: none;
     }
-
     #meusprojetos {
-        left: 5%;
-        top: 55%;
-        font-size: 0.9rem;    /* Diminui o tamanho da fonte do botão no celular */
-        padding: 3vw 6vw;     /* Ajusta o espaçamento interno para não ficar gigante */
-        border-radius: 8px;   /* Cantos arredondados mais suaves para telas pequenas */
+        left: 5%; top: 55%;
+        font-size: 0.9rem;
+        padding: 3vw 6vw;
+        border-radius: 8px;
+    }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to   { width: 24ch; }
+}
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+/* ==================== SOBRE MIM — CAMADAS DE FOTO ==================== */
+
+.sobremim-layers-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 5%;
+    border-radius: 1vw;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+    aspect-ratio: 3 / 4;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform 0.1s ease-out;
+}
+.sobremim-layers-container:not(:hover) {
+    transition: transform 0.5s ease;
+}
+.sobremim-layers-container:not(:hover) .layer-base-fundo,
+.sobremim-layers-container:not(:hover) .layer-krookodile,
+.sobremim-layers-container:not(:hover) .layer-eu,
+.sobremim-layers-container:not(:hover) .layer-mudkip {
+    transition: transform 0.5s ease;
+}
+
+.layer-base-fundo {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+    position: relative;
+}
+
+.layer-eu {
+    position: absolute;
+    bottom: -2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; height: auto;
+    z-index: 2;
+    pointer-events: none;
+    filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.6));
+}
+
+.layer-mudkip {
+    position: absolute;
+    bottom: 2%; left: 60%;
+    width: 140px; height: auto;
+    z-index: 3;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+    animation: mudkipBreathe 3s infinite ease-in-out;
+}
+
+.layer-krookodile {
+    position: absolute;
+    bottom: 10%; right: 30%;
+    width: 450px; height: auto;
+    z-index: 2;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+    pointer-events: none;
+}
+
+@keyframes mudkipBreathe {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50%       { transform: translateY(-4px) scale(1.03); }
+}
+
+@media (max-width: 1200px) {
+    .sobremim-layers-container {
+        max-width: 290px;
+        /* 20px no topo, auto nas laterais para centralizar, 25px na base */
+        margin: 20px auto 25px auto; 
+        border-radius: 8px;
+    }
+    .layer-eu { 
+        left: 50% !important; 
+        transform: translateX(-50%) !important; 
+    }
+    .layer-mudkip { 
+        width: 100px; 
+    }
+    .layer-krookodile { 
+        width: 380px; 
+        bottom: 10%; 
     }
 }
 
 
-#pfp{
-    width: 30vw;
-    margin-top: 1vw;
-    margin-bottom: 1vw;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    border-radius: 1vw;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-#sobremimtxt{
-    overflow: hidden;
-    border-radius: 1vw;
-    padding: 4vw;
-    font-family: monospace;
-    font-size: 140%;
-}
-.overlay-wrapper {
-    /* Garante que o conteúdo não seja puxado para fora */
-    overflow: hidden; 
+/* ==================== SOBRE MIM — TIPOGRAFIA ==================== */
+
+.sobremim-titulo {
+    font-family: 'Press Start 2P', sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 0 10px rgba(202,122,255,0.3);
 }
 
-.footer {
-    background: linear-gradient(transparent, #4e5d94);
-    padding: 5rem 0;
-    text-align: center;
-    color: #fff;
-}
-.footer-title {
-    font-family: "Montserrat", sans-serif;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-.footer-icons i {
-    font-size: 2.8rem;
-    transition: 0.3s ease;
-    color: #ffffffd1;
-}
-.footer-link:hover i {
-    color: #fff;
-    transform: scale(1.2);
-    text-shadow: 0 0 12px rgba(255,255,255,0.8);
-}
-.footer-copy {
-    margin-top: 2rem;
-    font-size: 0.9rem;
-    opacity: 0.7;
-}
-
-/* ==================== ESTILO ARTÍSTICO: QUADRO DE GIZ (CHALKBOARD) ==================== */
-
-/* Container da Janela do Quadro */
-.chalkboard-window {
-    position: relative;
-    padding: 12px;
-    width: 600px;
-}
-
-/* Moldura de Madeira Realista */
-.chalkboard-frame {
-    background: #191c1e; /* Cor base da ardósia escura */
-    /* Textura de quadro negro áspero simulada em CSS puro */
-    background-image: 
-        radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0),
-        radial-gradient(rgba(255, 255, 255, 0.02) 2px, transparent 0);
-    background-size: 8px 8px, 16px 16px;
-    border: 14px solid #3d2314; /* Moldura de madeira escura */
-    border-radius: 4px;
-    box-shadow: 
-        0 15px 35px rgba(0,0,0,0.7), 
-        inset 0 0 40px rgba(0,0,0,0.9),
-        0 4px 0 #24140b; /* Sombra tridimensional da madeira */
-    position: relative;
-    overflow: hidden;
-}
-
-/* Título Escrito a Giz */
-.chalkboard-header h2 {
+#sobremimtxt {
     font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.85);
+    overflow: hidden;
+}
+
+.txt-strong { color: #ffffff; font-weight: 700; letter-spacing: 0.5px; }
+
+/* Destaque estilo code inline para anos/idades */
+.txt-destaque {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #ffde3a;
+}
+
+/* Destaque para termos técnicos */
+.txt-destaque-tech {
+    background: rgba(202,122,255,0.1);
+    border: 1px solid rgba(202,122,255,0.25);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #ca7aff;
+}
+
+.sobremim-link {
+    color: #1bf2bb;
+    text-decoration: none;
     font-weight: 700;
-    font-size: 1.6rem;
-    color: rgba(255, 255, 255, 0.9);
-    letter-spacing: 2px;
-    padding-top: 25px;
-    /* Efeito borrado que simula o preenchimento do giz na pedra */
-    text-shadow: 0 0 2px rgba(255,255,255,0.5), 0 0 4px rgba(255,255,255,0.3);
+    border-bottom: 1px dashed rgba(27,242,187,0.4);
+    transition: all 0.3s ease;
+}
+.sobremim-link:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+    text-shadow: 0 0 8px rgba(255,255,255,0.5);
 }
 
-/* Linha de Giz abaixo do Título */
-.chalk-line {
-    width: 50%;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.4);
-    margin: 12px auto 0 auto;
-    border-radius: 50%;
-    filter: blur(0.5px); /* Suaviza o traço para parecer pó */
-    border-bottom: 1px dashed rgba(255,255,255,0.6);
+@media (min-width: 768px) {
+    .ps-md-5 { padding-left: 3rem !important; }
 }
 
-/* Cards das Disciplinas (Traçados a giz pontilhado) */
-.chalk-card {
-    background: rgba(255, 255, 255, 0.02) !important;
-    border: 2px dashed rgba(255, 255, 255, 0.2) !important;
-    border-radius: 0px;
-    transition: all 0.2s ease-in-out;
+@media (max-width: 1200px) {
+    .sobremim-titulo { text-align: center; font-size: 1.8rem; }
+    #sobremimtxt { font-size: 1rem; line-height: 1.7; text-align: justify; margin-bottom: 3%;}
 }
 
-/* Hover no Quadro (O Giz brilha mais forte ao passar o mouse) */
-.chalk-card:hover {
-    background: rgba(255, 255, 255, 0.04) !important;
-    border-color: rgba(255, 255, 255, 0.6) !important;
-    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.05);
-}
+.overlay-wrapper { overflow: hidden; }
 
-/* Categoria Técnica */
-.text-chalk-sub {
-    color: #ffd000; /* Giz Amarelo para destaques */
-    font-size: 0.7rem;
+/* ==================== PASTA DE PROJETOS ==================== */
+.folder-container { position: relative; margin-top: 20px; }
+.folder-content {
+    transition: opacity 0.3s cubic-bezier(0.25,1,0.5,1),
+                filter  0.3s cubic-bezier(0.25,1,0.5,1);
+    opacity: 1;
+    filter: blur(0px);
+}
+/* Estado de transição disparado pelo JS */
+.folder-content.mudando-pasta {
+    opacity: 0;
+    filter: blur(12px);
+}
+.folder-tabs {
+    gap: 6px;
+    padding-left: 15px;
+    position: relative;
+    bottom: -2px;
+    z-index: 2;
+}
+.folder-tab {
+    background: #1e1b29;
+    color: rgba(234,182,255,0.4);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 2px;
-    text-shadow: 0 0 3px rgba(255, 208, 0, 0.4);
+    letter-spacing: 1px;
+    padding: 10px 24px;
+    clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 100%, 0% 100%);
+    cursor: pointer;
+    transition: background 0.4s cubic-bezier(0.25,1,0.5,1),
+                color     0.4s cubic-bezier(0.25,1,0.5,1),
+                padding   0.4s cubic-bezier(0.25,1,0.5,1),
+                text-shadow 0.4s ease;
 }
-
-/* Ícone do Card enquadrado em giz */
-.chalk-badge {
-    width: 40px;
-    height: 40px;
+.folder-tab.active {
+    background: #2b2638;
+    color: #ca7aff;
+    padding-top: 12px;
+    text-shadow: 0 0 8px rgba(202,122,255,0.6);
+    animation: abaPulseNeon 0.5s ease-out;
+}
+@keyframes abaPulseNeon {
+    0%   { box-shadow: 0 0 0px transparent; filter: brightness(1); }
+    50%  { filter: brightness(1.4); }
+    100% { text-shadow: 0 0 10px rgba(202,122,255,0.8); }
+}
+.folder-card {
+    background: #2b2638;
+    border: 2px solid #473e5c;
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    z-index: 1;
+}
+.folder-project-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.btn-folder-arrow {
+    background: #1e1b29;
+    border: 1px solid #473e5c;
+    color: #ca7aff;
+    width: 42px; height: 42px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 1.1rem;
-}
-
-/* Interior do acordeon aberto */
-.chalk-card-body {
-    border-top: 2px dashed rgba(255, 255, 255, 0.2) !important;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-/* Modificações de Texto dentro do quadro */
-.style-chalk-text h6 {
-    color: #00bfff; /* Giz Azul Giz para títulos internos */
-    text-shadow: 0 0 3px rgba(0, 191, 255, 0.4);
-}
-.style-chalk-text p {
-    color: rgba(235, 235, 235, 0.85);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-}
-
-/* Tags de Skills (Estilo caixas desenhadas a giz) */
-.chalk-tag {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: rgba(255, 255, 255, 0.8);
-    padding: 4px 10px;
-    font-size: 0.75rem;
-    font-family: monospace;
-}
-.chalk-tag:hover {
-    border-color: #ffd000;
-    color: #ffd000;
-}
-
-/* Links do Quadro */
-.chalk-link {
-    color: #1bf2bb !important; /* Giz Verde para Repositórios */
-    text-decoration: underline dashed;
-    text-shadow: 0 0 3px rgba(27, 242, 187, 0.3);
-}
-
-/* Botão de Download de Giz */
-.btn-chalk-action {
-    background: transparent;
-    color: rgba(255, 255, 255, 0.8) !important;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    padding: 10px 20px;
-    border-radius: 0px;
+    font-size: 1.2rem;
+    cursor: pointer;
     transition: all 0.2s ease;
 }
-.btn-chalk-action:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.9);
-    color: #fff !important;
-    box-shadow: 0 0 10px rgba(255,255,255,0.2);
+.btn-folder-arrow:hover {
+    background: #ca7aff;
+    color: #1e1b29;
+    box-shadow: 0 0 12px rgba(202,122,255,0.6);
 }
-
-/* Emblema de Status (Concluído) */
-.badge-chalk-status {
-    background: transparent !important;
-    border: 1px solid rgba(255, 255, 255, 0.5) !important;
-    color: rgba(255, 255, 255, 0.9) !important;
-    font-size: 0.65rem;
+.folder-image-wrapper {
+    background: #1e1b29;
+    border: 1px solid #473e5c;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+    width: 100%;
 }
-
-/* Rotação da Seta do Acordeon */
-.chalk-card-header[aria-expanded="true"] .arrow-toggle {
-    transform: rotate(180deg);
-    color: rgba(255, 255, 255, 0.9) !important;
-}
-
-/* POSICIONAMENTO E ESTILIZAÇÃO DO NIKOLA TESLA */
-.tesla-chalk-art {
-    position: absolute;
-    bottom: -180px;
-    right: -160px;
-    width: 260px; /* Tamanho controlado para não cobrir o texto */
-    z-index: 5;
-    pointer-events: none; /* Permite clicar nos botões por trás dele se necessário */
-}
-
-.tesla-img {
+.folder-img {
     width: 100%;
     height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 2px;
     display: block;
-    transition: filter 0.3s ease;
+    margin: 0 auto;
+}
+.meta-label { font-size: 0.65rem; letter-spacing: 1px; margin-bottom: 2px; }
+.meta-value  { font-size: 0.9rem; font-family: 'Montserrat', sans-serif; }
+#project-authors a {
+    color: #c283f5 !important;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+#project-authors a:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px rgba(74,27,242,0.6);
+}
+@media (max-width: 992px) {
+    .folder-image-wrapper { padding: 1px; width: 105%; }
+    .folder-img { max-height: none; width: 100%; height: auto; object-fit: cover; }
+    .folder-meta-box { margin-top: 10px; }
+}
+@media (max-width: 768px) {
+    .folder-tab {
+        padding: 8px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 60px;
+    }
+    .folder-tab.active { padding-top: 10px; }
+}
+.folder-description-box {
+    background: rgba(30,27,41,0.6);
+    border-left: 3px solid #ca7aff;
+    border-radius: 2px;
+}
+.btn-folder-action {
+    background: transparent;
+    border: 1px solid #ca7aff;
+    color: #ca7aff !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    padding: 12px;
+    transition: all 0.25s ease;
+}
+.btn-folder-action:hover {
+    background: #ca7aff;
+    color: #1e1b29 !important;
+    box-shadow: 0 0 15px rgba(202,122,255,0.6);
+}
+/* ==================== SILVER WOLF ==================== */
+.silverwolf {
+    position: absolute;
+    bottom: -90px; right: -100px;
+    width: 230px;
+    z-index: 10;
+    pointer-events: none;
+}
+.silverwolf-img {
+    width: 100%; height: auto;
+    display: block;
+    transform: scaleX(-1);
 }
 
-/* Responsividade para telas mobile (Encolhe o Tesla para não quebrar o layout) */
-@media (max-width: 768px) {
-    .tesla-chalk-art {
-        width: 160px;
-        bottom: -15%;
-        right: -5px;
-    }
-}
-/* ==================== ACCORDION ONE FOR ALL (REFORMULADO) ==================== */
+/* ==================== ACCORDION ONE FOR ALL ==================== */
+
 #ofa-skills h2 {
     font-family: 'Press Start 2P', cursive;
     font-size: 1.8rem;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
 
 .ofa-accordion {
     display: flex;
     width: 100%;
-    height: 500px; /* AUMENTADO VERTICALMENTE (Antes era 380px) */
+    height: 500px;
     gap: 5px;
     margin-top: 30px;
 }
@@ -376,7 +473,7 @@
     position: relative;
     flex: 1;
     height: 100%;
-    background-color: rgba(35, 39, 42, 0.75);
+    background-color: rgba(35,39,42,0.75);
     backdrop-filter: blur(10px);
     padding: 25px;
     cursor: pointer;
@@ -385,35 +482,27 @@
     flex-direction: row;
     align-items: center;
     gap: 20px;
-    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: all 0.6s cubic-bezier(0.25,1,0.5,1);
 }
 
-/* Nova estilização para a imagem do portador */
 .ofa-card-img {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     object-fit: cover;
     z-index: 0;
-    opacity: 0.15; /* Fica bem escura/escondida por padrão */
-    filter: grayscale(100%); /* Sem cor no estado normal */
+    opacity: 0.15;
+    filter: grayscale(100%);
     transition: all 0.6s ease;
     pointer-events: none;
 }
 
-/* Garante que o texto fique por cima da imagem de fundo */
-.ofa-card-icon, .ofa-card-title, .ofa-card-content {
-    position: relative;
-    z-index: 1;
-}
+.ofa-card-icon, .ofa-card-title, .ofa-card-content { position: relative; z-index: 1; }
 
 .ofa-card-icon img {
-    width: 60px;
-    height: 60px;
+    width: 60px; height: 60px;
     object-fit: contain;
-    filter: grayscale(100%) opacity(0.6); /* Fica cinza e sutil por padrão */
+    filter: grayscale(100%) opacity(0.6);
     transition: all 0.4s ease;
 }
 
@@ -423,17 +512,8 @@
     flex-direction: column;
     min-width: 120px;
 }
-.ofa-card-title span {
-    font-size: 0.8rem;
-    color: #8e9297;
-    text-transform: uppercase;
-}
-.ofa-card-title h3 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #adb5bd;
-    margin: 0;
-}
+.ofa-card-title span { font-size: 0.8rem; color: #8e9297; text-transform: uppercase; }
+.ofa-card-title h3  { font-size: 1.6rem; font-weight: 700; color: #adb5bd; margin: 0; }
 
 .ofa-card-content {
     opacity: 0;
@@ -445,231 +525,208 @@
     justify-content: center;
     font-family: monospace;
 }
-.ofa-card-content h4 {
-    font-size: 1.3rem;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-.ofa-card-content p {
-    font-size: 1rem;
-    color: #f2f3f5;
-    max-width: 520px;
-    margin-bottom: 0;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.8); /* Melhora leitura por cima da imagem */
-}
+.ofa-card-content h4 { font-size: 1.3rem; margin-bottom: 8px; font-weight: bold; }
+.ofa-card-content p  { font-size: 1rem; color: #f2f3f5; max-width: 520px; margin-bottom: 0; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); }
 
-/* ==================== EFEITO HOVER ATUALIZADO ==================== */
 .ofa-card:hover {
     flex: 5;
-    background-color: rgba(20, 22, 24, 0.4); /* Escurece o fundo para destacar a foto */
+    background-color: rgba(20,22,24,0.4);
     border-color: var(--ofa-color);
     box-shadow: 0 0 30px var(--ofa-color);
 }
+.ofa-card:hover .ofa-card-img        { opacity: 0.45; filter: grayscale(0%); transform: scale(1.08); }
+.ofa-card:hover .ofa-card-icon img   { filter: grayscale(0%) drop-shadow(0 0 6px var(--ofa-color)); }
+.ofa-card:hover .ofa-card-title h3   { color: #ffffff; text-shadow: 0 0 8px rgba(255,255,255,0.5); }
+.ofa-card:hover .ofa-card-content h4 { color: var(--ofa-color); }
+.ofa-card:hover .ofa-card-content    { opacity: 1; transform: translateX(0); pointer-events: auto; transition-delay: 0.2s; }
 
-/* A imagem ganha vida e cor no hover */
-.ofa-card:hover .ofa-card-img {
-    opacity: 0.45;
-    filter: grayscale(0%);
-    transform: scale(1.08); 
-}
-
-.ofa-card:hover .ofa-card-icon img {
-    filter: grayscale(0%) drop-shadow(0 0 6px var(--ofa-color));
-}
-
-.ofa-card:hover .ofa-card-title h3 {
-    color: #ffffff;
-    text-shadow: 0 0 8px rgba(255,255,255,0.5);
-}
-.ofa-card:hover .ofa-card-content h4 {
-    color: var(--ofa-color);
-}
-
-.ofa-card:hover .ofa-card-content {
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: auto;
-    transition-delay: 0.2s;
-}
-
-/* RESPONSIVIDADE MOBILE */
 @media (max-width: 992px) {
-    #ofa-skills h2 {
-        font-size: 1.4rem !important; /* Ajusta o tamanho caso use a fonte Press Start 2P */
-        line-height: 1.5;
-    }
-    
-    .ofa-card-content p {
-        max-width: 100% !important; /* Impede o parágrafo de esticar para fora do card */
-        word-wrap: break-word;       /* Força a quebra de palavras longas se necessário */
-    }
-    .ofa-accordion {
-        flex-direction: column;
-        height: auto;
-    }
-    .ofa-card {
-        width: 100%;
-        height: 110px;
-        border-radius: 0px;
-    }
-    .ofa-card:hover {
-        flex: none;
-        height: 260px;
-    }
-    .ofa-card:hover .ofa-card-img {
-        opacity: 0.3;
-    }
+    #ofa-skills h2 { font-size: 1.4rem !important; line-height: 1.5; }
+    .ofa-card-content p { max-width: 100% !important; word-wrap: break-word; }
+    .ofa-accordion { flex-direction: column; height: auto; }
+    .ofa-card { width: 100%; height: 110px; border-radius: 0; }
+    .ofa-card:hover { flex: none; height: 260px; }
+    .ofa-card:hover .ofa-card-img { opacity: 0.3; }
 }
-/* ==================== DEKU TV MOBILE INTERFACE ==================== */
+/* ==================== SEÇÃO TECNOLOGIAS EXTRAS ==================== */
+.tech-extras-container {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 2rem;
+    border-radius: 4px; /* Combinando perfeitamente com a quina do ofa-accordion */
+}
+.extras-titulo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+/* Container do Ícone Individual */
+.extra-icon-box {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(69, 73, 129, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+}
+.extra-icon-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(20%) brightness(0.9);
+    transition: filter 0.3s ease;
+}
+/* Efeito de iluminação neon sutil baseado na cor de cada logo no Hover */
+.extra-icon-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--shadow-color);
+    box-shadow: 0 0 15px var(--shadow-color);
+    background-color: rgba(132, 183, 223, 0.9);
+}
+.extra-item-wrapper {
+    position: relative; /* Base para alinhar o balão */
+}
+/* O Balão Flutuante */
+.extra-item-wrapper::after {
+    content: attr(data-tech); /* Captura dinamicamente o nome configurado no HTML */
+    position: absolute;
+    bottom: 85px; /* Joga a caixinha para cima do ícone */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background-color: rgba(20, 22, 24, 0.95);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+/* Exibição suave ao passar o mouse */
+.extra-item-wrapper:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ==================== DEKU TV (MOBILE) ==================== */
+
 .dekutv-container {
     position: relative;
     width: 100%;
-    max-width: 500px; /* Mantém um tamanho excelente para telas de celular */
-    margin-top: -135px;
+    max-width: 500px;
+    margin-top: -140px;
 }
 
-.dekutv-base {
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: relative;
-    z-index: 2; /* Fica por cima para dar o efeito de moldura da TV */
-    pointer-events: none;
-}
+.dekutv-base { width: 100%; height: 100%; display: block; position: relative; z-index: 10; pointer-events: none; }
 
-/* Recorte exato da área interna da tela da TV */
 .dekutv-screen {
     position: absolute;
-    top: 34%;    /* Ajuste essas porcentagens se precisar centralizar */
-    left: 30%;   /* perfeitamente no vidro da sua imagem PNG */
-    width: 42%;
-    height: 25%;
+    top: 34%; left: 30%;
+    width: 42%; height: 25%;
     background-color: #8e9297;
-    z-index: 1;  /* Fica atrás da moldura da TV */
+    z-index: 2;
     overflow: hidden;
     transform: rotate(-10deg);
 }
 
-/* Contêiner do Glitch */
-.glitch-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.glitch-wrapper { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
 
-/* O Logo com animação estática e pulso neon */
 .glitch-logo {
-    width: 70px;
-    height: 70px;
+    width: 70px; height: 70px;
     object-fit: contain;
     filter: drop-shadow(0 0 8px var(--ofa-color));
     animation: tvGlitchEffect 3s infinite linear alternate-reverse, tvPulse 2s infinite ease-in-out;
 }
 
-/* Linhas de varredura (Scanlines) de TV antiga CRT */
 .glitch-scanlines {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background:
+    linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.25) 50%),
+    linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06));
     background-size: 100% 4px, 6px 100%;
     z-index: 3;
     pointer-events: none;
-    opacity: 0.8;
+    opacity: 0.9;
+    animation: tvFlicker 0.15s infinite;
 }
+
 .dekutv-info-box {
+    min-height: 125px; /* Evita a tela mudar de posição bruscamente */
     position: absolute;
-    bottom: -8%;      
-    right: 10%;     
-    width: 80%;      
-    background: linear-gradient(135deg, rgba(20, 22, 24, 0.65) 0%, rgba(10, 11, 12, 0.8) 100%);
+    bottom: -8%; right: 10%;
+    width: 80%;
+    background: linear-gradient(135deg, rgba(20,22,24,0.65) 0%, rgba(10,11,12,0.8) 100%);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255,255,255,0.05);
     border-radius: 8px;
-    z-index: 4;     
+    z-index: 12;
     transition: all 0.4s ease;
     text-align: left;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
-/* Ajustes finos nos textos para caberem de forma elegante na caixinha */
-.dekutv-info-box h5 {
-    font-size: 0.75rem !important;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-.dekutv-info-box h6 {
-    font-size: 0.9rem !important;
-}
-.dekutv-info-box p {
-    font-size: 0.68rem !important;
-    line-height: 1.3;
-    color: rgba(242, 243, 245, 0.7) !important;
-}
-/* ==================== GLITCH ESTÁTICO (MÉTODO SOBREPOSIÇÃO) ==================== */
-/* 1. Granular da tela */
+.dekutv-info-box h5 { font-size: 0.75rem !important; text-transform: uppercase; letter-spacing: 0.5px; }
+.dekutv-info-box h6 { font-size: 0.9rem !important; }
+.dekutv-info-box p  { font-size: 0.68rem !important; line-height: 1.3; color: rgba(242,243,245,0.7) !important; }
+
+/* Granulado da tela */
 .dekutv-screen::before {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    /* ruído estático usando um gradiente radial repetitivo */
-    background-image: 
-        repeating-radial-gradient(#000 0% 12%, transparent 13% 25%),
-        repeating-radial-gradient(#fff 0% 12%, transparent 13% 25%);
-    background-size: 8px 8px; /* Tamanho do grão da estática */
-    opacity: 0.15; 
-    z-index: 2; /* Fica acima do logo, mas abaixo das scanlines */
-    animation: staticNoise 0.2s infinite; /* Animação ultra rápida */
+    background-image:
+    repeating-radial-gradient(#000 0% 12%, transparent 13% 25%),
+    repeating-radial-gradient(#fff 0% 12%, transparent 13% 25%);
+    background-size: 8px 8px;
+    opacity: 0.15;
+    z-index: 4;
+    animation: staticNoise 0.2s infinite;
     pointer-events: none;
 }
-/* 2. Interferência */
-.glitch-scanlines {
-    /* Mantemos sua estilização original, apenas adicionamos a animação */
-    animation: tvFlicker 0.15s infinite; 
-    z-index: 3; /* Topo de tudo na tela */
-    opacity: 0.9;
-}
-/* 3. glitch da logo */
+
 @keyframes tvGlitchEffect {
-    0%, 90%, 100% {
-        transform: translate(0) skew(0deg);
-        filter: drop-shadow(0 0 8px var(--ofa-color)) grayscale(0%);
-    }
-    91% {
-        transform: translate(1px, 1px);
-        filter: drop-shadow(-2px 0 #332e3a) drop-shadow(2px 0 #505f57) saturate(3);
-    }
-    93% {
-        transform: translate(-1px, -1px) skew(-1deg);
-        filter: hue-rotate(90deg) contrast(1.5);
-    }
-    95% {
-        transform: translate(2px, 0px) skew(1deg);
-    }
+    0%, 90%, 100% { transform: translate(0) skew(0deg); filter: drop-shadow(0 0 8px var(--ofa-color)) grayscale(0%); }
+    91% { transform: translate(1px,1px); filter: drop-shadow(-2px 0 #332e3a) drop-shadow(2px 0 #505f57) saturate(3); }
+    93% { transform: translate(-1px,-1px) skew(-1deg); filter: hue-rotate(90deg) contrast(1.5); }
+    95% { transform: translate(2px,0px) skew(1deg); }
 }
-/* ==================== KEYFRAMES (ESTÁTICA E PISQUE) ==================== */
-/* Gera o grão em movimento da "neve" de TV */
+
 @keyframes staticNoise {
-    0% { background-position: 0 0; }
-    20% { background-position: 1px 1px; }
-    40% { background-position: -1px -1px; }
-    60% { background-position: 2px 0; }
-    80% { background-position: 0 -2px; }
+    0%   { background-position: 0 0; }
+    20%  { background-position: 1px 1px; }
+    40%  { background-position: -1px -1px; }
+    60%  { background-position: 2px 0; }
+    80%  { background-position: 0 -2px; }
     100% { background-position: 1px 1px; }
 }
-/* Simula a interferência e o piscar irregular da tela antiga */
+
 @keyframes tvFlicker {
     0%, 100% { opacity: 0.8; }
-    5% { opacity: 0.5; }
+    5%  { opacity: 0.5; }
     10% { opacity: 0.9; }
-    15% { opacity: 0.2; } /* Queda brusca de brilho */
+    15% { opacity: 0.2; }
     20% { opacity: 0.8; }
     30% { opacity: 1; }
     80% { opacity: 0.9; }
     90% { opacity: 0.4; }
 }
+
 .dekutv-screen.mudando-canal::after {
     content: "";
     position: absolute;
@@ -680,66 +737,354 @@
 }
 
 @keyframes estaticaCanalEfeito {
-    0% {
-        opacity: 0;
-        background-color: transparent;
-    }
-    /* 1. A estática começa a surgir e falhar agressivamente */
+    0% { opacity: 0; background-color: transparent; }
     15% {
         opacity: 0.7;
-        background-image: 
-            repeating-radial-gradient(#fff 0% 10%, #000 11% 22%),
-            linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
+        background-image:
+        repeating-radial-gradient(#fff 0% 10%, #000 11% 22%),
+        linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.4) 50%);
         background-size: 5px 5px, 100% 6px;
         filter: contrast(2.5) brightness(1.8);
     }
-    /* 2. O Pico do Chuvisco: Bloqueia totalmente a imagem antiga com ruído denso e linhas de erro brancas */
     40%, 65% {
         opacity: 1;
-        background-image: 
+        background-image:
             repeating-radial-gradient(#fff 0% 8%, #111 9% 18%),
             repeating-linear-gradient(0deg, #ccc, #ccc 2px, transparent 2px, transparent 12px),
             linear-gradient(0deg, rgba(255,255,255,0.4), transparent 40%, rgba(0,0,0,0.8));
         background-size: 3px 3px, 100% 14px, 100% 100%;
         filter: contrast(3.5) brightness(2.2) saturate(0);
-        /* Movimenta o ruído de fundo freneticamente no pico */
         background-position: 5px -10px, 0px 20px, 0 0;
     }
-    /* 3. O sinal do novo canal começa a se estabilizar, a estática vai morrendo */
     85% {
         opacity: 0.5;
         background-image: repeating-radial-gradient(#fff 0% 12%, #000 13% 25%);
         background-size: 6px 6px;
         filter: contrast(1.8) brightness(1.2);
     }
-    100% {
-        opacity: 0;
-        background-color: transparent;
-    }
+    100% { opacity: 0; background-color: transparent; }
 }
 
-/* 4. EFEITO EXTRA: Faz a logo antiga "rolar" e distorcer na vertical enquanto a estática sobe */
 .dekutv-screen.mudando-canal .glitch-logo {
     animation: desestabilizarSinal 0.28s linear forwards !important;
 }
 
 @keyframes desestabilizarSinal {
-    0% {
-        transform: translateY(0) scale(1) skewX(0deg);
-        filter: blur(0);
+    0%   { transform: translateY(0) scale(1) skewX(0deg); filter: blur(0); }
+    30%  { transform: translateY(-80px) scaleY(1.8) skewX(10deg); filter: blur(2px) brightness(3) contrast(2); }
+    70%  { transform: translateY(80px) scaleY(1.5); filter: blur(1px); }
+    100% { transform: translateY(0) scale(1) skewX(0deg); filter: blur(0); }
+}
+/* ==================== FITAS RESPONSIVAS ==================== */
+@media (max-width: 991px) {
+    .marquee-faixa {
+        position: absolute;
+        width: 160vw; /* Esticada para cobrir as diagonais sem cortar nas bordas */
+        left: -30vw;
+        overflow: hidden;
+        background: rgba(20, 22, 24, 0.95);
+        padding: 6px 0;
+        text-transform: uppercase;
+        font-family: 'Press Start 2P', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+        white-space: nowrap;
+        user-select: none;
+        border-top: 2px solid var(--ofa-color, #1bf2bb);
+        border-bottom: 2px solid var(--ofa-color, #1bf2bb);
+        box-shadow: 0 0 15px rgba(27, 242, 187, 0.2);
+        transition: border-color 0.4s ease, box-shadow 0.4s ease;
     }
-    /* A imagem perde o sincronismo vertical e começa a "subir" e esticar simulando o frame quebrado */
-    30% {
-        transform: translateY(-80px) scaleY(1.8) skewX(10deg);
-        filter: blur(2px) brightness(3) contrast(2);
+
+    .marquee-track {
+        display: inline-block;
+        color: #ffffff;
+        text-shadow: 0 0 5px var(--ofa-color, #1bf2bb);
     }
-    /* Volta por baixo se reposicionando para o novo logo entrar firme */
-    70% {
-        transform: translateY(80px) scaleY(1.5);
-        filter: blur(1px);
+
+    /* Fita 1: Diagonal Subindo (Atrás do Deku) */
+    .fita-diagonal-1 {
+        top: 32%; /* Alinha na altura da tela da TV */
+        transform: rotate(-15deg);
+        z-index: 1; 
     }
-    100% {
-        transform: translateY(0) scale(1) skewX(0deg);
-        filter: blur(0);
+    .fita-diagonal-1 .marquee-track {
+        animation: marquee-para-direita 6s linear infinite;
     }
+
+    /* Fita 2: Diagonal Descendo (Atrás do Deku) */
+    .fita-diagonal-2 {
+        top: 32%; /* Alinha na altura da tela da TV */
+        transform: rotate(15deg);
+        z-index: 2;
+    }
+    .fita-diagonal-2 .marquee-track {
+        animation: marquee-para-direita 6s linear infinite;
+    }
+
+    /* Fita 3: Passando na frente (Sobrepondo a base do plástico da TV) */
+    .fita-horizontal-frente {
+        top: 52%; /* Posicionada cirurgicamente para cruzar em cima do plástico inferior */
+        transform: rotate(-2deg);
+        z-index: 10; /* Passa por cima de tudo */
+        background: rgba(27, 242, 187, 0.1);
+        backdrop-filter: blur(3px);
+        border-color: #ffffff;
+    }
+    .fita-horizontal-frente .marquee-track {
+        animation: marquee-para-esquerda 5s linear infinite;
+        color: var(--ofa-color, #1bf2bb);
+        text-shadow: 0 0 5px #ffffff;
+    }
+
+    /* Animações de Movimento */
+    @keyframes marquee-para-direita {
+        0% { transform: translate3d(-50%, 0, 0); }
+        100% { transform: translate3d(0, 0, 0); }
+    }
+    @keyframes marquee-para-esquerda {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+    }
+}
+/* ==================== QUADRO DE GIZ (CHALKBOARD) ==================== */
+
+.chalkboard-window { position: relative; padding: 12px; width: 600px; margin-bottom: 5rem;}
+
+.chalkboard-frame {
+    background: #191c1e;
+    background-image:
+        radial-gradient(rgba(255,255,255,0.03) 1px, transparent 0),
+        radial-gradient(rgba(255,255,255,0.02) 2px, transparent 0);
+    background-size: 8px 8px, 16px 16px;
+    border: 14px solid #3d2314;
+    border-radius: 4px;
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.7),
+        inset 0 0 40px rgba(0,0,0,0.9),
+        0 4px 0 #24140b;
+    position: relative;
+    overflow: hidden;
+}
+
+.chalkboard-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 2px;
+    padding-top: 25px;
+    text-shadow: 0 0 2px rgba(255,255,255,0.5), 0 0 4px rgba(255,255,255,0.3);
+}
+
+.chalk-line {
+    width: 50%; height: 3px;
+    background: rgba(255,255,255,0.4);
+    margin: 12px auto 0;
+    border-radius: 50%;
+    filter: blur(0.5px);
+    border-bottom: 1px dashed rgba(255,255,255,0.6);
+}
+
+.chalk-card {
+    background: rgba(255,255,255,0.02) !important;
+    border: 2px dashed rgba(255,255,255,0.2) !important;
+    border-radius: 0;
+    transition: all 0.2s ease-in-out;
+}
+.chalk-card:hover {
+    background: rgba(255,255,255,0.04) !important;
+    border-color: rgba(255,255,255,0.6) !important;
+    box-shadow: inset 0 0 15px rgba(255,255,255,0.05);
+}
+
+.text-chalk-sub {
+    color: #ffd000;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 0 3px rgba(255,208,0,0.4);
+}
+
+.chalk-badge {
+    width: 40px; height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
+}
+
+.chalk-card-body {
+    border-top: 2px dashed rgba(255,255,255,0.2) !important;
+    background: rgba(0,0,0,0.2);
+}
+
+.style-chalk-text h6 { color: #00bfff; text-shadow: 0 0 3px rgba(0,191,255,0.4); }
+.style-chalk-text p  { color: rgba(235,235,235,0.85); font-family: 'Montserrat', sans-serif; font-weight: 400; }
+
+.chalk-tag {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.8);
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-family: monospace;
+}
+.chalk-tag:hover { border-color: #ffd000; color: #ffd000; }
+
+.chalk-link {
+    color: #1bf2bb !important;
+    text-decoration: underline dashed;
+    text-shadow: 0 0 3px rgba(27,242,187,0.3);
+}
+
+.btn-chalk-action {
+    background: transparent;
+    color: rgba(255,255,255,0.8) !important;
+    border: 2px solid rgba(255,255,255,0.4);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 0;
+    transition: all 0.2s ease;
+}
+.btn-chalk-action:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.9);
+    color: #fff !important;
+    box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.badge-chalk-status {
+    background: transparent !important;
+    border: 1px solid rgba(255,255,255,0.5) !important;
+    color: rgba(255,255,255,0.9) !important;
+    font-size: 0.65rem;
+}
+
+.chalk-card-header[aria-expanded="true"] .arrow-toggle {
+    transform: rotate(180deg);
+    color: rgba(255,255,255,0.9) !important;
+}
+
+.tesla-chalk-art {
+    position: absolute;
+    bottom: -180px; right: -160px;
+    width: 260px;
+    z-index: 5;
+    pointer-events: none;
+}
+.tesla-img { width: 100%; height: auto; display: block; transition: filter 0.3s ease; }
+
+@media (max-width: 768px) {
+    .tesla-chalk-art { width: 160px; bottom: -15%; right: -5px; };
+    .chalkboard-window {margin-bottom: 1rem;}
+}
+
+/* ==================== FOOTER ==================== */
+.footer-css {
+    position: relative;
+    width: 100%;
+    padding: 3rem 0 1.5rem;
+    background-color: rgba(35,39,42,0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+    overflow: hidden;
+    z-index: 99;
+}
+
+.footer-conteudo { position: relative; z-index: 3; }
+
+.footer-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+}
+
+.footer-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; height: 50px;
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    color: rgba(255,255,255,0.7);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+.footer-link:hover {
+    color: rgb(157, 202, 245);
+    background-color: rgba(27,242,187,0.1);
+    border-color: rgb(157, 202, 245);
+    transform: translateY(-3px);
+}
+
+.footer-copy { text-align: center; font-size: 0.9rem; color: rgba(255,255,255,0.4); }
+
+.footer-video-container {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    mix-blend-mode: screen;
+    opacity: 0.5;
+    filter: contrast(0.9) saturate(1.5);
+    transition: opacity 0.5s ease;
+}
+
+.footer-video-clip { width: 30%; height: 100%; object-fit: cover; }
+
+@media (max-width: 1100px) {
+    .footer-css { padding-bottom: 1.2rem; }
+    .footer-video-clip { width: 100%; height: 100%; opacity: 0.35; }
+}
+
+/* ==================== BOTÃO VOLTAR AO TOPO ==================== */
+.btn-retornar-topo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(78, 93, 148, 0.7); /* Mesma cor da sua navbar com opacidade */
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Efeito Hover sutil mudando para o tom verde neon do seu site */
+.btn-retornar-topo:hover {
+    background-color: rgba(157, 202, 245, 0.918);
+    color: #2c2c38;
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(157, 202, 245, 0.6);
+}
+
+/* Classe que o JavaScript vai injetar para fazer o botão surgir */
+.btn-retornar-topo.mostrar {
+    opacity: 0.7;
+    visibility: visible;
 }
