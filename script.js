@@ -401,41 +401,51 @@ btnTopo.addEventListener('click', () => {
 });
 
 // ====== EFEITO DE CRIPTOGRAFIA DE TEXTO (HACKER EFFECT) ======
-const caracteresCripto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%-+=*";
-
+// Objeto global para armazenar os timers ativos de cada fita
+const timersFitas = {
+    "fita-texto-1": null,
+    "fita-texto-2": null,
+    "fita-texto-3": null
+};
 function aplicarEfeitoCripto(elementoId, textoFinalCompleto) {
     const elemento = document.getElementById(elementoId);
     if (!elemento) return;
 
+    // >>> CORREÇÃO DO BUG: Se já existir um timer rodando nesta fita, limpa ele antes
+    if (timersFitas[elementoId]) {
+        clearInterval(timersFitas[elementoId]);
+    }
+
+    const caracteresCripto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%-+=*";
     let rodada = 0;
-    const intervalo = setInterval(() => {
+
+    // Armazena o novo intervalo no nosso objeto global
+    timersFitas[elementoId] = setInterval(() => {
         elemento.innerText = textoFinalCompleto
             .split("")
             .map((letra, index) => {
-                if (letra === " ") return " "; // Mantém os espaços estruturais
-                if (index < rodada) return textoFinalCompleto[index]; // Fixa a letra certa
-                return caracteresCripto[Math.floor(Math.random() * caracteresCripto.length)]; // Embaralha
+                if (letra === " ") return " "; 
+                if (index < rodada) return textoFinalCompleto[index]; 
+                return caracteresCripto[Math.floor(Math.random() * caracteresCripto.length)]; 
             })
             .join("");
 
         if (rodada >= textoFinalCompleto.length) {
-            clearInterval(intervalo);
+            clearInterval(timersFitas[elementoId]);
+            timersFitas[elementoId] = null; // Limpa a referência ao terminar
         }
-        rodada += 2; // Velocidade da revelação das letras
+        rodada += 2; 
     }, 30);
 }
 
 // ====== FUNÇÃO PARA ATUALIZAR AS FITAS ======
 function atualizarTextoDasFitas(nomeTecnologia) {
-    // Repete o nome da tecnologia para preencher a esteira da fita
     const textoRepetido = `${nomeTecnologia} `.repeat(30).trim();
 
-    // Dispara a animação hacker para cada uma das 3 fitas
     aplicarEfeitoCripto("fita-texto-1", textoRepetido);
     aplicarEfeitoCripto("fita-texto-2", textoRepetido);
     aplicarEfeitoCripto("fita-texto-3", textoRepetido);
 
-    // BÔNUS: Atualiza dinamicamente a cor da borda das fitas no CSS
     const tecnologiaAtual = listaTecnologias.find(t => t.nome === nomeTecnologia);
     if (tecnologiaAtual) {
         document.querySelectorAll('.marquee-faixa').forEach(faixa => {
