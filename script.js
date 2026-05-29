@@ -73,6 +73,7 @@ const listaTecnologias = [
 
 let indiceAtual = 0;
 let intervaloDekuTv;
+
 // Função responsável por atualizar a interface com efeitos visuais
 function atualizarDekuTv() {
     const tech = listaTecnologias[indiceAtual];
@@ -407,19 +408,24 @@ const timersFitas = {
     "fita-texto-2": null,
     "fita-texto-3": null
 };
+
+// Variáveis de controle do estado de Sobrecarga (Spam)
+let travaFitasAtiva = false;
+let sistemaEmErro = false;
+
 function aplicarEfeitoCripto(elementoId, textoFinalCompleto) {
     const elemento = document.getElementById(elementoId);
     if (!elemento) return;
 
-    // >>> CORREÇÃO DO BUG: Se já existir um timer rodando nesta fita, limpa ele antes
+    // Se houver um processo anterior rodando, força a limpeza imediata
     if (timersFitas[elementoId]) {
         clearInterval(timersFitas[elementoId]);
+        timersFitas[elementoId] = null;
     }
 
     const caracteresCripto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%-+=*";
     let rodada = 0;
 
-    // Armazena o novo intervalo no nosso objeto global
     timersFitas[elementoId] = setInterval(() => {
         elemento.innerText = textoFinalCompleto
             .split("")
@@ -432,14 +438,31 @@ function aplicarEfeitoCripto(elementoId, textoFinalCompleto) {
 
         if (rodada >= textoFinalCompleto.length) {
             clearInterval(timersFitas[elementoId]);
-            timersFitas[elementoId] = null; // Limpa a referência ao terminar
+            timersFitas[elementoId] = null;
+            
+            // Só libera a trava se o sistema não tiver entrado em colapso por spam
+            if (elementoId === "fita-texto-3" && !sistemaEmErro) {
+                travaFitasAtiva = false;
+            }
         }
-        rodada += 2; 
+        rodada += 15; 
     }, 30);
 }
 
 // ====== FUNÇÃO PARA ATUALIZAR AS FITAS ======
 function atualizarTextoDasFitas(nomeTecnologia) {
+    // SE O SISTEMA JÁ ESTIVER EM COOLDOWN DE ERRO, IGNORA TUDO
+    if (sistemaEmErro) return;
+
+    // SE ESTIVER TRAVADO E O USUÁRIO CLICAR DE NOVO = DISPARA O MODULO DE ERRO!
+    if (travaFitasAtiva) {
+        dispararColapsoDoSistema();
+        return;
+    }
+    
+    // Ativa a trava normal de renderização
+    travaFitasAtiva = true;
+
     const textoRepetido = `${nomeTecnologia} `.repeat(30).trim();
 
     aplicarEfeitoCripto("fita-texto-1", textoRepetido);
@@ -451,5 +474,50 @@ function atualizarTextoDasFitas(nomeTecnologia) {
         document.querySelectorAll('.marquee-faixa').forEach(faixa => {
             faixa.style.setProperty('--ofa-color', tecnologiaAtual.cor);
         });
+    }
+}
+
+// ====== MECÂNICA DE ERRO POR SPAM (ANTI-MALDITO-SPAM) ======
+function dispararColapsoDoSistema() {
+    sistemaEmErro = true;
+    travaFitasAtiva = true;
+
+    // Texto hacker de erro que vai preencher as esteiras
+    const textoErro = "[ ERROR_SYSTEM_OVERLOAD ] ".repeat(12).trim();
+
+    // Troca a cor de todas as fitas para Vermelho Alerta instantaneamente
+    document.querySelectorAll('.marquee-faixa').forEach(faixa => {
+        faixa.style.setProperty('--ofa-color', '#ff003c'); // Vermelho Cyberpunk
+    });
+
+    // Roda o efeito hacker injetando a mensagem de erro nas fitas
+    aplicarEfeitoCripto("fita-texto-1", textoErro);
+    aplicarEfeitoCripto("fita-texto-2", textoErro);
+    aplicarEfeitoCripto("fita-texto-3", textoErro);
+
+    // Tempo que o sistema vai ficar quebrado e congelado (Ex: 3000ms = 3 segundos)
+    setTimeout(() => {
+        restaurarSistemaDasFitas();
+    }, 3000);
+}
+
+function restaurarSistemaDasFitas() {
+    sistemaEmErro = false;
+    travaFitasAtiva = false;
+
+    // Pega a tecnologia que está ativa na TV no momento exato do reset
+    const tecnologiaAtual = listaTecnologias[atualIndexMobile];
+    
+    // Devolve o texto e a cor original da tecnologia atual de forma limpa
+    if (tecnologiaAtual) {
+        const textoRepetido = `${tecnologiaAtual.nome} `.repeat(30).trim();
+        
+        document.querySelectorAll('.marquee-faixa').forEach(faixa => {
+            faixa.style.setProperty('--ofa-color', tecnologiaAtual.cor);
+        });
+
+        aplicarEfeitoCripto("fita-texto-1", textoRepetido);
+        aplicarEfeitoCripto("fita-texto-2", textoRepetido);
+        aplicarEfeitoCripto("fita-texto-3", textoRepetido);
     }
 }
